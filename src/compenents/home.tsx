@@ -1,12 +1,12 @@
-import React from 'react'
-import navbar from './navbar'
 
-const home = () => {
+import Navbar from './navbar'
+
+const Home = () => {
   return (
     <div className='home-container'>
-      <navbar />
+      <Navbar />
     </div>
   )
 }
 
-export default home
+export default Home
