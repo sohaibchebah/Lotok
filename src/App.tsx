@@ -1,12 +1,13 @@
-import React from 'react'
-import home from './compenents/home'
+import React from "react";
+
 
 const App = () => {
   return (
     <div>
-      <home/>
+  
+      
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
