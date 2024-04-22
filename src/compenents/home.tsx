@@ -1,10 +1,12 @@
 
+import Background from './background-left'
 import Navbar from './navbar'
 
 const Home = () => {
   return (
     <div className='home-container'>
-      <Navbar />
+      
+      <Background></Background>
     </div>
   )
 }
