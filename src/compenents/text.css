@@ -1,0 +1,11 @@
+:root {
+    --primary-color : #D72323;
+}
+.container .text {
+    text-transform: capitalize;
+    font-size: 40px;
+
+}
+.container .text .span {
+    
+}
