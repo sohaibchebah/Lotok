@@ -1,0 +1,18 @@
+:root {
+    --main-color: #D72323; 
+    --black-color: #0000; 
+    --white-color: white; 
+    --secondary-color: #777777; 
+    --light-gray: #EEEEEE; 
+    --light: #F5EDED; 
+
+}
+body {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  /* font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  /* font-weight: <weight>;
+  fonbt-style: normal */
+  
+}

@@ -8,7 +8,7 @@ const Home = () => {
       
       <Background></Background>
     </div>
-  )
-}
+  );
+};
 
 export default Home

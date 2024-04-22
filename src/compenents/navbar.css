@@ -1,0 +1,30 @@
+.navibar {
+}
+.navibar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navibar .logo img {
+  width: 100px;
+}
+.navibar .links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navibar .links a {
+  text-decoration: none;
+  color: black;
+  margin: 10px 15px;
+  font-weight: 600;
+
+}
+.navibar .links button {
+  color: white;
+  background-color: black;
+  padding: 5px 15px;
+  border-radius: 10px;
+  font-weight: 600;
+}
