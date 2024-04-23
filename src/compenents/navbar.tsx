@@ -1,4 +1,3 @@
-import "bootstrap/dist/css/bootstrap.css";
 import Logo from "../../public/images/logo.png";
 import "../compenents/navbar.css";
 import Loto from "../../public/images/rightloto.png"

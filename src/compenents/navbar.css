@@ -1,11 +1,10 @@
-
 .navibar .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .navibar .logo img {
-  width: 100px;
+  height: 120px;
 }
 .navibar .links {
   list-style: none;
@@ -18,7 +17,6 @@
   color: white;
   margin: 10px 15px;
   font-weight: 600;
-
 }
 .navibar .links button {
   color: white;
@@ -27,7 +25,6 @@
   border-radius: 10px;
   font-weight: 600;
 }
-
 
 .loto {
   width: 597px;
@@ -38,26 +35,27 @@
 }
 .vector {
   position: absolute;
-  left: 439.53px;
-  top: -103.83px;
+  right: -0px;
+  top: 0;
   z-index: -1;
-  width: 908.91px;
-  height: 724.65px;
-  transform: rotate(22.09°);
+  height: 76%;
+  /* height: 570px;  */
+  /* width: 908.91px;
+  height: 724.65px; */
+  transform: rotate(28°);
 }
 .navibar .links li {
   margin-right: 30px;
 }
 
 .texts .rent {
-    font-size: 60px;
-    font-family: Montserrat;
-    text-transform: capitalize;
-    font-weight: 700;
-    margin-top: 90px;
-    margin-bottom: 30px;
-    line-height: 81px;
-
+  font-size: 81px;
+  font-family: Montserrat;
+  text-transform: capitalize;
+  font-weight: 700;
+  margin-top: 70px;
+  margin-bottom: 30px;
+  line-height: 1.2;
 }
 .rent span {
   color: var(--main-color);
@@ -78,8 +76,8 @@
 .reserver {
   position: absolute;
   right: 50%;
-  transform: translate(-50% , -50%);
+  transform: translate(-50%, -50%);
   background-color: var(--main-color);
   margin-top: 150px;
-  box-shadow: 3px 4px 4px  hsla(0, 0%, 0%, 50%);
+  box-shadow: 3px 4px 4px hsla(0, 0%, 0%, 50%);
 }
