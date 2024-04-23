@@ -29,10 +29,11 @@
 }
 
 .loto {
-  width: 500px;
+  width: 597px;
   position: absolute;
   right: 80px;
   top: 100px;
+  height: 373px;
 }
 .vector {
   position: absolute;
@@ -41,6 +42,7 @@
   z-index: -1;
   width: 908.91px;
   height: 724.65px;
+  transform: rotate(22.09°);
 }
 .navibar .links li {
   margin-right: 30px;
