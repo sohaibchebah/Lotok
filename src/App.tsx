@@ -1,11 +1,13 @@
 import React from "react";
-import Home from "./compenents/home";
+import Home from "./comp/home";
 import "../src/App.css";
-import "bootstrap/dist/css/bootstrap.css";
+import "../src/index.css";
+// import "bootstrap/dist/css/bootstrap.css";
 
 const App = () => {
   return (
-    <div>
+    <div className="relative">
+      
       <Home />
     </div>
   );
