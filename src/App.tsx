@@ -1,5 +1,5 @@
 import React from "react";
-import Home from "./compenents/home";
+import Home from "./comp/home";
 import "../src/App.css";
 import "bootstrap/dist/css/bootstrap.css";
 

@@ -4,29 +4,28 @@ import App from "./App.tsx";
 import "bootstrap/dist/css/bootstrap.css";
 import "./normelize.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Login from './compenents/Login.tsx';
-import Signup from "./compenents/Signup.tsx";
-import NotFound from "./compenents/NotFound.tsx";
+import Login from "./comp/Login.tsx";
+import Signup from "./comp/Signup.tsx";
+import NotFound from "./comp/NotFound.tsx";
 
-const router = createBrowserRouter([{
-  path: '/',
-  element : <App/>,
-  errorElement: <NotFound/>,
-},
+const router = createBrowserRouter([
   {
-    path: '/Login',
-    element  : <Login/>,
-
-  }
-  ,
+    path: "/",
+    element: <App />,
+    errorElement: <NotFound />,
+  },
   {
-    path: '/Signup',
-    element : <Signup/>,
-  }
+    path: "/Login",
+    element: <Login />,
+  },
+  {
+    path: "/Signup",
+    element: <Signup />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router = {router} />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
