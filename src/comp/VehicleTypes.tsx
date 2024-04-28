@@ -4,14 +4,14 @@ interface TypeProps {
     id: number; 
     name: string; 
 }
-const FakeTypes: TypeProps {
-    
-}
+// const FakeTypes: TypeProps {
+
+// }
 const VehicleTypes = () => {
   const [selectedTab, setSelectedTab] = useState<string | null>(null);
 
   // Fake data for the tab list
-  const tabList: styring[] = ["Car", "Motorcycle", "Truck"];
+  const tabList: TypeProps[] = ["Car", "Motorcycle", "Truck"];
 
   return (
     <div className="flex">
