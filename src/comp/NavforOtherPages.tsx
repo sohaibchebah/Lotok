@@ -9,7 +9,7 @@ interface Props {
   label: string;
   url: string;
 }
-const Nav = () => {
+const NavforOtherPages = () => {
   const [isListOpen, setIsListOpen] = useState(false);
   useEffect(() => {
     const handleResize = () => {
@@ -29,39 +29,24 @@ const Nav = () => {
   }, []); // Empty
   const toggleList = () => {
     setIsListOpen(!isListOpen);
-  };
-  const history = useNavigate();
+    };
+      const history = useNavigate();
 
-  const handleClick = () => {
-    // Navigate to Component2 when the button is clicked
-    history("/Home");
-  };
+      const handleClick = () => {
+        // Navigate to Component2 when the button is clicked
+        history("/Home");
+      };
   const Navlinks: Props[] = [
     { label: "Home", url: "./home.tsx" },
     { label: "Brands", url: "./Brands.tsx" },
     { label: "Vehicles", url: "./Vehicles.tsx" },
     { label: "About", url: "./About.tsx" },
   ];
-  // fixed the top nav
-  const [isScroll, setScroll] = useState(false);
-  const handleScrollDown = () => {
-    setScroll(true);
-  };
-  window.addEventListener("scroll", handleScrollDown);
   return (
-    <header className={" absolute z-50 -top-3 w-[100%]  "}>
-      <div
-        className={
-          " max-lg:bg-white   container max-lg:fixed top-0 max-lg:right-1/2 max-lg:translate-x-1/2 flex justify-between lg:items-center items-start min-[1170px]:w-[1100px] min-[1300px]:w-[1270px] "
-        }
-      >
+    <header className="absolute z-50 -top-3 w-[100%] ">
+      <div className="container bg-white fixed top right-1/2 translate-x-1/2  flex justify-between lg:items-center items-start min-[1170px]:w-[1100px] min-[1300px]:w-[1270px] ">
         <div className="logoImg">
-          <img
-            src={LogoImg}
-            onClick={handleClick}
-            className=" cursor-pointer object-contain h-[150px]"
-            alt="#"
-          />
+          <img src={LogoImg} onClick={handleClick} className=" cursor-pointer object-contain h-[150px]" alt="#" />
         </div>
 
         <div className=" max-lg:pt-14  list flex flex-col justify-center items-center">
@@ -77,7 +62,7 @@ const Nav = () => {
                 <li key={item.label}>
                   <a
                     href={item.url}
-                    className=" lg:mx-2 px-4 py-4 my-4 text-white font-semibold max-xl:py-1 w-[100%] max-lg:hover:bg-black lg:hover:text-black transition-all ease-in"
+                    className=" lg:mx-2 px-4 py-4 my-4 text-white lg:text-black font-semibold max-xl:py-1 w-[100%] max-lg:hover:bg-black lg:hover:text-primary-red transition-all ease-in"
                   >
                     {item.label}
                   </a>
@@ -95,4 +80,4 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+export default NavforOtherPages;

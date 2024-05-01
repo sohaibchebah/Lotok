@@ -1,7 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
+import Home from "./comp/Home.tsx";
 import "./normelize.css";
+import BrandPage from "./comp/brandPage/bransPage.tsx";
+
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import Login from './comp/Login.tsx';
 // import Signup from "./comp/Signup.tsx";
@@ -13,10 +16,18 @@ const router = createBrowserRouter([
     element: <App />,
     // errorElement: <NotFound/>,
   },
+
+  {
+    path: "/brands",
+    element: <BrandPage />,
+  },
+  {
+    path: "/Home",
+    element: <Home />,
+  },
   // {
   //   path: '/Login',
   //   element  : <Login/>,
-
   // }
   // ,
   // {

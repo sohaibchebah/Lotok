@@ -31,9 +31,9 @@
 //         },
 //         grey: "#EEEEEE",
 //       },
-//       screens: {
-//         1170: "1170px",
-//         1300: "1300px",
+// screens: {
+//   1170: "1170px",
+//   1300: "1300px",
 //       },
 //     },
 //   },
@@ -64,6 +64,10 @@ module.exports = {
       },
     },
     extend: {
+      backgroundImage: {
+        'bgimage': "url('public/images/bgimage')",
+        
+      },
       fontFamily: {
         inter: ["Poppins", "sans-serif"],
       },
@@ -116,6 +120,10 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+      },
+      screens: {
+        1170: "1170px",
+        1300: "1300px",
       },
     },
     borderRadius: {
