@@ -1,7 +1,9 @@
 import React from "react";
 import Card from "./Card";
-
-const CarData = () => {
+interface Props {
+  showOnlythree: boolean; 
+}
+const CarData = ({showOnlythree} : Props) => {
   const cars: CarListProps = [
     {
       id: 1,
@@ -59,7 +61,7 @@ const CarData = () => {
 
   return (
     <div>
-      <Card carList={cars} />
+      <Card carList={cars} showThree={showOnlythree} />
     </div>
   );
 };
