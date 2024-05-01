@@ -17,7 +17,7 @@ const Hero = () => {
         </p>
       </div>
       <div className="hero__image-container ">
-        <img src={heroBgImg} className="hero__image-overlay" />
+        <img src={heroBgImg} alt="img1" className="hero__image-overlay" />
         <div className="hero__image lg:pr-[50px]">
           <img src={heroImg} alt="img" className="object-contain" />
         </div>

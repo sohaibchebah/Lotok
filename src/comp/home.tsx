@@ -1,5 +1,5 @@
 import Hero from "./Hero";
-import Nav from "./Nav";
+import Nav from "./nav";
 // import Navexemple from "./navexemple";
 import Searching from "./Searching";
 import BrandsSection from "./BrandsSection";
@@ -8,7 +8,7 @@ import AboutSetction from "./AboutSetction";
 import AppSection from "./AppSection";
 import FooterSection from "./FooterSection";
 
-const Home = () => {
+const home = () => {
   return (
     <div className="">
       <div className="landing-page ">
@@ -37,4 +37,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default home;
