@@ -1,18 +1,16 @@
 :root {
-    --main-color: #D72323; 
-    --black-color: #0000; 
-    --white-color: white; 
-    --secondary-color: #777777; 
-    --light-gray: #EEEEEE; 
-    --light: #F5EDED; 
-
+  --main-color: #d72323;
+  --black-color: #0000;
+  --white-color: white;
+  --secondary-color: #777777;
+  --light-gray: #eeeeee;
+  --light: #f5eded;
 }
 /* body {
   font-family: "Poppins", sans-serif;
   font-style: normal;
-  /* font-family: "Montserrat", sans-serif;
+}
+/* font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   /* font-weight: <weight>;
-  fonbt-style: normal } */ 
-  
-
+  fonbt-style: normal */

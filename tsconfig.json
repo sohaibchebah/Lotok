@@ -19,12 +19,12 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    // shadcn
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src"],
+
+  "include": ["src", "@/components/components", "@/lib/validation", "@/components/ui/input.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -1,13 +1,20 @@
+import Hero from "./Hero";
+import Nav from "./nav";
+// import Navexemple from "./navexemple";
+import Searching from "./Searching";
+import { Button } from "../../@/components/ui/button";
+import { Outlet } from "react-router-dom";
 
-// import Login from '../../src/Login'
-
-const Home = () => {
+const home = () => {
   return (
-    <div>
-     
+    <div className="relative">
+      <Nav />
+      <Hero></Hero>
+      <Searching />
+      
       
     </div>
   );
 };
 
-export default Home
+export default home;
