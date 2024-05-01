@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
+import Home from "./comp/Home.tsx";
 import "./normelize.css";
 import { BrowserRouter } from "react-router-dom";
 import Login from "./_auth/forms/Login.tsx";

@@ -3,14 +3,15 @@
 @tailwind utilities;
 */
 
-* { 
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
 h1,
-.special-text {
+.special-text,
+.special-title {
   font-family: "Montserrat", sans-serif;
 }
 :root {
@@ -20,7 +21,7 @@ h1,
   --secondary-color: #777777;
   --light-gray: #eeeeee;
   --light: #f5eded;
-} 
+}
 body {
   font-family: "Poppins", sans-serif;
   font-style: normal;
@@ -65,7 +66,7 @@ body {
 }
 
 .hero__title {
-  @apply 2xl:text-[81px] lg:text-[74px] text-[50px] md:max-w-[50%] lg:max-w-[91%] font-bold max-lg:text-center max-lg:w-[85%] mx-auto my-6;
+  @apply 2xl:text-[78px] lg:text-[70px] text-[50px] md:max-w-[50%] lg:max-w-[91%] font-bold max-lg:text-center max-lg:w-[85%] mx-auto mt-8 mb-2 leading-tight;
 }
 
 .hero__subtitle {

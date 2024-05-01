@@ -1,6 +1,6 @@
 import React from "react";
-import heroImg from "../../public/images/rightloto.png"
-import heroBgImg from "../../public/images/nvector.png"
+import heroImg from "../../public/images/rightloto.png";
+import heroBgImg from "../../public/images/nvector.png";
 const Hero = () => {
   return (
     <div className="hero xl:overflow-x-hidden h-screen max-lg:pt-[150px]">
