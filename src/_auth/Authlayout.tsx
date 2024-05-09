@@ -1,8 +1,9 @@
-import React from 'react'
-import nav from '@/comp/nav';
-import { Navigate , Outlet } from 'react-router-dom';
+import React from "react";
+import nav from "@/comp/Nav";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import { Navigate, Outlet } from "react-router-dom";
 const Authlayout = () => {
-    const isAuthenticated = false;
+  const isAuthenticated = false;
   return (
     <>
       {isAuthenticated ? (
@@ -16,13 +17,14 @@ const Authlayout = () => {
               className="hidden lg:block h-screen  w-1/2  -ml-14  rotate-0"
             />
             
-            <Outlet />
+              <Outlet />
+            
             
           </div>
         </>
       )}
     </>
   );
-}
+};
 
-export default Authlayout
+export default Authlayout;

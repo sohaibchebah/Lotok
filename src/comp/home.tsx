@@ -1,5 +1,5 @@
 import Hero from "./Hero";
-import Nav from "./nav";
+import Nav from "./Nav";
 // import Navexemple from "./navexemple";
 import Searching from "./Searching";
 import BrandsSection from "./BrandsSection";
