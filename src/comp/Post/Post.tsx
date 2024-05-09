@@ -32,11 +32,6 @@ import { DatePicker } from "./DatePicker";
 import { Payement } from "./Payement";
 const Post = () => {
   const { state } = useLocation();
-  let i = 0;
-
-  const widthofrating = (width: number, tot: number) => {
-    return `w-${width}/${tot}`;
-  };
 
   return (
     <div>
