@@ -1,22 +1,22 @@
-import React from 'react'
+import React from "react";
 import NavforOtherPages from "../NavforOtherPages";
 import SpecialTiltle from "../SpecialTiltle";
 import FooterSection from "../FooterSection";
-import CarData from '../CardData';
+import FakeDataBySearch from "../VehiclesBySearch/FakeDataBySearch";
 
-const Vehiclespage = () => {
+const VehiceBySearchPage = () => {
   return (
     <div>
       <NavforOtherPages />
       <div className="container mt-[200px] ">
-              <SpecialTiltle> Vehicles</SpecialTiltle>
-              <CarData showOnlythree={false} />
+        <SpecialTiltle> Vehicles</SpecialTiltle>
+        <FakeDataBySearch />
       </div>
       <div className="bg-black">
         <FooterSection />
       </div>
     </div>
   );
-}
+};
 
-export default Vehiclespage
+export default VehiceBySearchPage;

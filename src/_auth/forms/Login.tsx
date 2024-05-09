@@ -8,10 +8,8 @@ import Profile from "./Profile";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "../../../@/components/ui/form";
 import { Input } from "../../../@/components/ui/input";
@@ -93,6 +91,24 @@ const Login = () => {
                     {...field}
                   />
                 </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                {/* <FormLabel>password</FormLabel> */}
+                <FormControl>
+                  <Input
+                    type="password"
+                    className="mb-2 py-6 w-[300px]"
+                    placeholder="Password"
+                    {...field}
+                  />
+                </FormControl>
 
                 <FormMessage />
               </FormItem>
@@ -127,6 +143,6 @@ const Login = () => {
       </Form>
     </>
   );
-}
+};
 
-export default Login
+export default Login;

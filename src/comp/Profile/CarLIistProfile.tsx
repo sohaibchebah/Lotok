@@ -4,10 +4,10 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { faGasPump } from "@fortawesome/free-solid-svg-icons";
 import { faMapLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { faScrewdriverWrench } from "@fortawesome/free-solid-svg-icons";
-import StarRatingcomp from "./starRatingcomp";
+import StarRatingcomp from "../starRatingcomp";
 import { faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
-import { Button } from "../../@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Button } from "../../../@/components/ui/button";
+
 interface CarDetails {
   id: number;
   make: string;
@@ -25,23 +25,20 @@ interface CarDetails {
   surance: number;
   scanner: number;
   city: string;
-  availability: { from: string; to: string }[];
+  availability: { from: string; to: string };
   airConditioner: boolean;
   userName: string;
   userImg: string;
-  sets: number;
-  isAvailable: boolean; 
 }
 interface CarListProps {
   carList: CarDetails[];
-  showThree: boolean;
 }
-const Card = ({ carList, showThree }: CarListProps) => {
+const CarLIistProfile = ({ carList }: CarListProps) => {
   return (
     <div>
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2  xl:grid-cols-3  gap-4 mb-[60px] ">
         {carList.map((car, ind) =>
-          ind < 3 || !showThree ? (
+          ind < 1000 ? (
             <li
               key={car.id}
               className="flex flex-col items-start justify-center border-solid border p-3 rounded-t-md shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]  hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)]"
@@ -126,12 +123,10 @@ const Card = ({ carList, showThree }: CarListProps) => {
                   <span>{car.energy}</span>
                 </li>
               </ul>
-              <Link className="w-full" to={"/Post"} state={car}>
-                <Button className="w-full h-11 shadow-xl shadow-light-pink mb-2 ">
-                  {" "}
-                  BOOK
-                </Button>
-              </Link>
+              <Button className="w-full h-11 shadow-xl shadow-light-pink mb-2 ">
+                {" "}
+                BOOK
+              </Button>
             </li>
           ) : null
         )}
@@ -140,4 +135,4 @@ const Card = ({ carList, showThree }: CarListProps) => {
   );
 };
 
-export default Card;
+export default CarLIistProfile;
