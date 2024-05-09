@@ -25,7 +25,10 @@ const App = () => {
     <main className="">
       <Routes>
         {/* public routes */}
+        
+        <Route path="/Profile" element={<Profile/>}/>
         <Route path="/" element={<Home />} />
+        <Route/>
         <Route path="/brands" element={<BrandPage />}></Route>
         <Route path="/Models" element={<ModelPage />}></Route>
         <Route path="/VehiclesPage" element={<Vehiclespage />}></Route>

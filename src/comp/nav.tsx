@@ -37,7 +37,7 @@ const Nav = () => {
     history("/");
   };
   const Navlinks: Props[] = [
-    { label: "Home", url: "./home.tsx" },
+    { label: "Home", url: "/" },
     { label: "Brands", url: "./Brands.tsx" },
     { label: "Vehicles", url: "./Vehicles.tsx" },
     { label: "About", url: "./About.tsx" },
