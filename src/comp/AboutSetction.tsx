@@ -2,7 +2,6 @@ import React from "react";
 import SpecialTiltle from "./SpecialTiltle";
 import BlueCar from "../../public/images/BmwPic.png";
 import vect from "../../public/images/Vector Line.png";
-import ButtonOfSect from "./ButtonOfSect";
 import { Button } from "../../@/components/ui/button";
 const AboutSetction = () => {
   return (
@@ -18,7 +17,7 @@ const AboutSetction = () => {
           />
         </div>
         <div className="text-cont  lg:max-w-[38%] max-lg:flex flex-col justify-center items-center mt-5">
-          <h2 className=" max-lg:text-center lg:-ml-10 text-primary-red mb-4 font-semibold text-3xl lg:pl-10 border-solid border-transparent   lg:border-l-primary-red-100">
+          <h2 className=" max-lg:text-center lg:-ml-10 text-primary-red mb-4 font-semibold text-3xl lg:pl-10 border-solid border-transparent border  lg:border-l-primary-red-100">
             {" "}
             Beyond Rentals, Building Memories
           </h2>

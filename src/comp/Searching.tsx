@@ -5,8 +5,14 @@ import { City } from "./City";
 import { Year } from "./Year";
 import { Energy } from "./Energy";
 import { Button } from "../../@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const Searching = () => {
+  const history = useNavigate();
+  const handleClick = () => {
+    // Navigate to Component2 when the button is clicked
+    history("/VehiceBySearchPage");
+  };
   return (
     <div>
       <div
@@ -20,7 +26,10 @@ const Searching = () => {
           <City />
           <Year />
           <Energy />
-          <Button className="bg-black max-lg:w-[250px]"> Search </Button>
+          <Button onClick={handleClick} className="bg-black max-lg:w-[250px]">
+            {" "}
+            Search{" "}
+          </Button>
         </div>
       </div>
     </div>

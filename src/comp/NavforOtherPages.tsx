@@ -34,7 +34,7 @@ const NavforOtherPages = () => {
 
       const handleClick = () => {
         // Navigate to Component2 when the button is clicked
-        history("/Home");
+        history("/");
       };
   const Navlinks: Props[] = [
     { label: "Home", url: "./home.tsx" },

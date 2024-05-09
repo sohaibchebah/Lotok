@@ -7,8 +7,7 @@ import VehiclesSection from "./VehiclesSection";
 import AboutSetction from "./AboutSetction";
 import AppSection from "./AppSection";
 import FooterSection from "./FooterSection";
-
-const home = () => {
+const Home = () => {
   return (
     <div className="">
       <div className="landing-page ">
@@ -37,4 +36,4 @@ const home = () => {
   );
 };
 
-export default home;
+export default Home;

@@ -33,7 +33,7 @@ body {
 /* START: General styles */
 
 .container {
-  @apply px-4 md:w-[750px] lg:w-[970px] xl:w-[1180px] mx-auto;
+  @apply px-4 md:w-[750px] lg:w-[970px] xl:w-[1180px] mx-auto ;
 }
 .max-width {
   @apply max-w-[1440px] mx-auto;

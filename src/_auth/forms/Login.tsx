@@ -1,13 +1,11 @@
-import React from 'react'
+import React from "react";
 
 import { Button } from "../../../@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "../../../@/components/ui/form";
 import { Input } from "../../../@/components/ui/input";
@@ -31,74 +29,70 @@ const Login = () => {
 
   return (
     <>
-      
-        
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="flex flex-col w-full items-center h-full justify-center"
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="flex flex-col w-full items-center h-full justify-center"
+        >
+          <h2 className="  font-bold text-3xl mb-[50px]">Login</h2>
+
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                {/* <FormLabel>Email</FormLabel> */}
+                <FormControl className="mb-2 py-6  ">
+                  <Input
+                    type="email"
+                    className="w-1/2  w-[300px]"
+                    placeholder="Email"
+                    {...field}
+                  />
+                </FormControl>
+
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                {/* <FormLabel>password</FormLabel> */}
+                <FormControl>
+                  <Input
+                    type="password"
+                    className="mb-2 py-6 w-[300px]"
+                    placeholder="Password"
+                    {...field}
+                  />
+                </FormControl>
+
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button
+            type="submit"
+            className="shad-button_primary w-[300px] flex flex-center"
           >
-            <h2 className="  font-bold text-3xl mb-[50px]">Login</h2>
-
-            
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  {/* <FormLabel>Email</FormLabel> */}
-                  <FormControl className="mb-2 py-6  ">
-                    <Input
-                      type="email"
-                      className="w-1/2  w-[300px]"
-                      placeholder="Email"
-                      {...field}
-                    />
-                  </FormControl>
-
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  {/* <FormLabel>password</FormLabel> */}
-                  <FormControl>
-                    <Input
-                      type="password"
-                      className="mb-2 py-6 w-[300px]"
-                      placeholder="Password"
-                      {...field}
-                    />
-                  </FormControl>
-
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <Button
-              type="submit"
-              className="shad-button_primary w-[300px] flex flex-center"
+            {isLoading ? <div>loading ...</div> : <div>Login</div>}
+          </Button>
+          <p className="text-small-regular text-2 text-center mt-2 ">
+            Don't have an account ?
+            <Link
+              to="/Signup"
+              className="text-primary text-small-semibold ml-1"
             >
-              {isLoading ? <div>loading ...</div> : <div>Login</div>}
-            </Button>
-            <p className="text-small-regular text-2 text-center mt-2 ">
-              Don't have an account ?
-              <Link
-                to="/Signup"
-                className="text-primary text-small-semibold ml-1"
-              >
-                Sign Up
-              </Link>
-            </p>
-          </form>
-        </Form>
-      
+              Sign Up
+            </Link>
+          </p>
+        </form>
+      </Form>
     </>
   );
-}
+};
 
-export default Login
+export default Login;
