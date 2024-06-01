@@ -1,5 +1,4 @@
 import * as React from "react";
-
 import {
   Select,
   SelectContent,
@@ -9,11 +8,17 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../../@/components/ui/select";
+
 interface CarEnergy {
   id: number;
   name: string;
 }
-export function Energy() {
+
+interface EnergyProps {
+  onEnergyChange: (energy: string) => void;
+}
+
+export function Energy({ onEnergyChange }: EnergyProps) {
   const carEnergyTypes: CarEnergy[] = [
     { id: 1, name: "Gasoline" },
     { id: 2, name: "Diesel" },
@@ -22,17 +27,22 @@ export function Energy() {
     { id: 5, name: "Natural Gas" },
     { id: 6, name: "Hydrogen Fuel Cell" },
   ];
+
+  const handleSelectChange = (value: string) => {
+    onEnergyChange(value);
+    console.log("Energy Type Selected:", value);
+  };
+
   return (
-    <Select>
+    <Select onValueChange={handleSelectChange}>
       <SelectTrigger className="w-[250px]">
         <SelectValue placeholder="Car energy" />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectLabel>Wilayat</SelectLabel>
+          <SelectLabel>Car energy</SelectLabel>
           {carEnergyTypes.map((item) => (
-            <SelectItem value={item.name}>
-              {" "}
+            <SelectItem key={item.id} value={item.name}>
               {item.id} {item.name}
             </SelectItem>
           ))}

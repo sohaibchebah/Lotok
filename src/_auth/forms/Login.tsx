@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
-import axios from 'axios';
+import axios from "axios";
 import { Link, Navigate } from "react-router-dom";
 import { Button } from "../../../@/components/ui/button";
 import Profile from "./Profile";
@@ -19,25 +19,26 @@ import { useForm } from "react-hook-form";
 import { LoginValidation } from "../../../@/lib/validation/index";
 
 const Login = () => {
-  async function logUser(userData:any) {
+  async function logUser(userData: any) {
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/jwt/create/',
-        JSON.stringify(userData), {
-        headers: { "Content-Type": "application/json" },
-      });
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/jwt/create/",
+        JSON.stringify(userData),
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
       // if (response.status === 201) {
-        console.log("user loged successefily", response.data);
-        <Navigate to='/Profile'></Navigate>;
+      console.log("user loged successefily", response.data);
+      <Navigate to="/Profile"></Navigate>;
       // }
       // else {
       //   console.error("wrong log in ", response.statusText);
       // }
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error);
     }
-
-  };
+  }
   const isLoading = false;
   const form = useForm<z.infer<typeof LoginValidation>>({
     resolver: zodResolver(LoginValidation),
@@ -95,25 +96,6 @@ const Login = () => {
               </FormItem>
             )}
           />
-          <FormField
-            control={form.control}
-            name="password"
-            render={({ field }) => (
-              <FormItem>
-                {/* <FormLabel>password</FormLabel> */}
-                <FormControl>
-                  <Input
-                    type="password"
-                    className="mb-2 py-6 w-[300px]"
-                    placeholder="Password"
-                    {...field}
-                  />
-                </FormControl>
-
-                <FormMessage />
-              </FormItem>
-            )}
-          />
           <Button
             type="submit"
             className="shad-button_primary w-[300px] flex flex-center"
@@ -130,15 +112,15 @@ const Login = () => {
               Sign Up
             </Link>
           </p>
-        <GoogleLogin
-          onSuccess={(credentialResponse) => {
-            const decoded = jwtDecode(credentialResponse?.credential);
-            console.log(decoded);
-          }}
-          onError={() => {
-            console.log("Login Failed");
-          }}
-        />
+          <GoogleLogin
+            onSuccess={(credentialResponse) => {
+              const decoded = jwtDecode(credentialResponse?.credential);
+              console.log(decoded);
+            }}
+            onError={() => {
+              console.log("Login Failed");
+            }}
+          />
         </form>
       </Form>
     </>

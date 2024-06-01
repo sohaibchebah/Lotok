@@ -7,18 +7,18 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-} from "../../@/components/ui/select";
+} from "../../../@/components/ui/select";
 
 interface Location {
   id: number;
   name: string;
 }
 
-interface CityProps {
-  onCityChange: (city: string) => void;
+interface PaymentProps {
+  onPaymentChange: (paymentMethod: string) => void;
 }
 
-export function City({ onCityChange }: CityProps) {
+export function City({ onPaymentChange }: PaymentProps) {
   const locations: Location[] = [
     { id: 1, name: "Adrar" },
     { id: 2, name: "Chlef" },
@@ -81,17 +81,17 @@ export function City({ onCityChange }: CityProps) {
   ];
 
   const handleSelectChange = (value: string) => {
-    onCityChange(value);
+    onPaymentChange(value);
   };
 
   return (
     <Select onValueChange={handleSelectChange}>
       <SelectTrigger className="w-[250px]">
-        <SelectValue placeholder="Select a Wilaya" />
+        <SelectValue placeholder="City" />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectLabel>Wilayat</SelectLabel>
+          <SelectLabel>City</SelectLabel>
           {locations.map((item) => (
             <SelectItem key={item.id} value={item.name}>
               {item.id} {item.name}
