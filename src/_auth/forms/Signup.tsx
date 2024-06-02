@@ -58,6 +58,8 @@ const Signup = () => {
   //   },
   // }
   // );
+baseurl = "http://192.168.172.217:8000/";
+   
 async function createUser(userData) {
   try {
     const response = await axios.post(

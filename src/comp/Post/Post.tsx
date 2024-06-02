@@ -105,9 +105,9 @@ const Post = () => {
       date_to: "",
     },
   });
-  function Booking(values: z.infer<typeof postValidation>) {
-    console.log(values);
-  }
+  const onSubmit = (data : any) => {
+    console.log(data);
+  };
   return (
     <div>
       <NavforOtherPages />
@@ -127,7 +127,7 @@ const Post = () => {
             <DialogContent className="sm:max-w-[425px]">
               <DialogHeader></DialogHeader>
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(Booking)}>
+                <form onSubmit={form.handleSubmit(onSubmit)}>
                   <div className="flex flex-col items-center justify-center gap-10 ">
                     <div className="flex  flex-col items-center gap-4">
                       <h2 className="text-black text-sm font-semibold">
@@ -194,7 +194,7 @@ const Post = () => {
                         </div>
                       </div>
                     </div>
-                    {/* <div className="flex flex-col items-center gap-4">
+                    <div className="flex flex-col items-center gap-4">
                       <h2 className="text-black text-sm font-semibold">
                         {" "}
                         Driving Licence info
@@ -284,7 +284,7 @@ const Post = () => {
                     </div>
                     <div>
                       <Payement onPaymentChange={handleSelect}> </Payement>
-                    </div> */}
+                    </div>
                     <DialogFooter>
                       <Button type="submit">BOOK</Button>
                     </DialogFooter>
