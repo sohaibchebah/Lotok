@@ -22,8 +22,11 @@ import { StringValidation, z } from "zod";
 import { useForm } from "react-hook-form";
 import { SignupValidation } from "../../../@/lib/validation/index";
 import { useCreateUserAccount } from "/lib/react-query/queriesAndmutations.ts";
+import { useState } from "react";
 const Signup = () => {
-  //     
+  const [err, setErr] = useState<String>("");
+
+  //    
   // const [isLoading , setisLoading] = useState();
   const isLoading = false;
   // const mutation = useMutation(
@@ -62,7 +65,6 @@ async function createUser(userData) {
       JSON.stringify(userData),
       {
         headers: { "Content-Type": "application/json" },
-        
       }
     );
 
@@ -72,11 +74,11 @@ async function createUser(userData) {
     } else {
       console.error("Error creating user:", response.statusText);
     }
-  } catch (error) {
-    console.error("Error creating user:", error);
+  } catch (e:any) {
+    console.error(e.response?.data.email);
+    setErr(e.response?.data.email);
   }
 }
-
 
 
   
@@ -218,6 +220,8 @@ async function createUser(userData) {
               log in
             </Link>
           </p>
+          <p className="text-primary mb-3 mt-3">{err}</p>
+
           <GoogleLogin
             onSuccess={(credentialResponse) => {
               const decoded = jwtDecode(credentialResponse?.credential);

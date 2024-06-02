@@ -4,7 +4,7 @@ import { jwtDecode } from "jwt-decode";
 import axios from 'axios';
 import { Link, Navigate } from "react-router-dom";
 import { Button } from "../../../@/components/ui/button";
-import Profile from "./Profile";
+import Yprofile from './Yprofile';
 import {
   Form,
   FormControl,
@@ -17,24 +17,75 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { LoginValidation } from "../../../@/lib/validation/index";
+import { createContext, useState } from "react";
+import { access, link } from 'fs';
 
 const Login = () => {
+  const [err, setErr] = useState<String>('');
+  const [accessToken, setAccessToken] = useState<String>('');
+  const [refreshToken, setRefreshToken] = useState<String>('');
+  const [firstName, setfirstName] = useState<String>("");
+  const [lastName, setlastName] = useState<String>("");
+  const [id, setId] = useState<number>();
+  const [status, setStatus] = useState<number>();
+
+
+
+
+
+
   async function logUser(userData:any) {
     try {
       const response = await axios.post('http://127.0.0.1:8000/api/jwt/create/',
         JSON.stringify(userData), {
-        headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json" },
+          
       });
-      // if (response.status === 201) {
-        console.log("user loged successefily", response.data);
-        <Navigate to='/Profile'></Navigate>;
-      // }
-      // else {
-      //   console.error("wrong log in ", response.statusText);
-      // }
+      //  <Navigate to='/Profile'></Navigate>;
+      
+        // console.log(userData);
+      setAccessToken(response?.data.access);
+      setRefreshToken(response?.data.refresh);
+      setStatus(response?.status);
+      // console.log('accesstoken is:' + accessToken);
+        // console.log(access)
+        // window.location.href = '/Profile';
+         
+        
+      console.log("user loged successefily", response.data);
+      const authStr = 'Bearer ' + accessToken;
+      async function userInfo() {
+        try {
+          const response = await axios.get(
+            "http://127.0.0.1:8000/api/users/me/",
+            { headers: { Authorization: authStr } }
+          );
+          
+          setfirstName(response?.data.first_name);
+          setlastName(response?.data.last_name);
+          setId(response?.data.id);
+          console.log(response.data);
+          console.log(firstName, lastName, id);
+          // setlastName(response?.data.last_name);
+          // setId(response?.data.id);
+          // console.log('first : ' + firstName + ' last : ' + lastName + ' id :' + id);
+          
+        } catch (e: any) {
+          console.log(e.response.data.detail);
+        }
+      }
+      userInfo();
+      
+      
+        
+      
+      
+      
     }
-    catch (error) {
-      console.log(error);
+    
+    catch (e:any) {
+      console.log(e);
+      setErr(e.response.data.detail);
     }
 
   };
@@ -44,6 +95,7 @@ const Login = () => {
     defaultValues: {
       email: "",
       password: "",
+      
     },
   });
   // function onSubmit(values: z.infer<typeof LoginValidation>) {
@@ -82,7 +134,6 @@ const Login = () => {
             name="password"
             render={({ field }) => (
               <FormItem>
-                {/* <FormLabel>password</FormLabel> */}
                 <FormControl>
                   <Input
                     type="password"
@@ -95,31 +146,15 @@ const Login = () => {
               </FormItem>
             )}
           />
-          <FormField
-            control={form.control}
-            name="password"
-            render={({ field }) => (
-              <FormItem>
-                {/* <FormLabel>password</FormLabel> */}
-                <FormControl>
-                  <Input
-                    type="password"
-                    className="mb-2 py-6 w-[300px]"
-                    placeholder="Password"
-                    {...field}
-                  />
-                </FormControl>
 
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          
           <Button
-            type="submit"
-            className="shad-button_primary w-[300px] flex flex-center"
-          >
-            {isLoading ? <div>loading ...</div> : <div>Login</div>}
+              type="submit"
+              className="shad-button_primary w-[300px] flex flex-center"
+            >
+              {isLoading ? <div>loading ...</div> : <div>Login</div>}
           </Button>
+         
           <p className="text-small-regular text-2 text-center mt-2 ">
             Don't have an account ?
             <Link
@@ -130,15 +165,16 @@ const Login = () => {
               Sign Up
             </Link>
           </p>
-        <GoogleLogin
-          onSuccess={(credentialResponse) => {
-            const decoded = jwtDecode(credentialResponse?.credential);
-            console.log(decoded);
-          }}
-          onError={() => {
-            console.log("Login Failed");
-          }}
-        />
+          <p className="text-primary mb-3 mt-3">{err}</p>
+          <GoogleLogin
+            onSuccess={(credentialResponse) => {
+              const decoded = jwtDecode(credentialResponse?.credential);
+              console.log(decoded);
+            }}
+            onError={() => {
+              console.log("Login Failed");
+            }}
+          />
         </form>
       </Form>
     </>

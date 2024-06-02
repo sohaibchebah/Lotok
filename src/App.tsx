@@ -13,6 +13,8 @@ import ModelPage from "./comp/ModelPage/ModelPage.tsx";
 import VehiclesByBrands from "./comp/VehiclesByBrands/VehiclesByBrands.tsx";
 import Post from "./comp/Post/Post.tsx";
 import Profile from "./comp/Profile/Profile.tsx";
+import Yprofile from "./_auth/forms/Yprofile.tsx";
+import admin from "./_root/Admin.tsx";
 // import Home from "./comp/home";
 import Home from "./comp/home.tsx";
 import Reservations from "./comp/Reservation/Reservations.tsx";
@@ -25,7 +27,7 @@ const App = () => {
     <main className="">
       <Routes>
         {/* public routes */}
-        
+        <Route path="/Yprofile" element={<Yprofile/>}/>
         <Route path="/Profile" element={<Profile/>}/>
         <Route path="/" element={<Home />} />
         <Route/>
@@ -45,6 +47,7 @@ const App = () => {
           <Route path="/Login" element={<Login />} />
         </Route>
         {/* private routes */}
+        <Route path="/Admin" element={<admin/>}></Route>
       </Routes>
     </main>
   );
