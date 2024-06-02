@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
-import axios from 'axios';
+import axios from "axios";
 import { Link, Navigate } from "react-router-dom";
 import { Button } from "../../../@/components/ui/button";
 import Yprofile from './Yprofile';
@@ -87,8 +87,7 @@ const Login = () => {
       console.log(e);
       setErr(e.response.data.detail);
     }
-
-  };
+  }
   const isLoading = false;
   const form = useForm<z.infer<typeof LoginValidation>>({
     resolver: zodResolver(LoginValidation),

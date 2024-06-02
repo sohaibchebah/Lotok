@@ -1,5 +1,4 @@
 import * as React from "react";
-
 import {
   Select,
   SelectContent,
@@ -9,19 +8,30 @@ import {
   SelectTrigger,
   SelectValue,
 } from "../../@/components/ui/select";
+
 interface Location {
   id: number;
   name: string;
 }
-export function Year() {
+
+interface YearProps {
+  onYearChange: (year: string) => void;
+}
+
+export function Year({ onYearChange }: YearProps) {
   const years: Location[] = [];
 
   for (let i = 1970; i <= 2024; i++) {
     years.push({ id: i - 1969, name: i.toString() });
   }
 
+  const handleSelectChange = (value: string) => {
+    onYearChange(value);
+    console.log("Year Selected:", value);
+  };
+
   return (
-    <Select>
+    <Select onValueChange={handleSelectChange}>
       <SelectTrigger className="w-[250px]">
         <SelectValue placeholder="Select a Year" />
       </SelectTrigger>
@@ -29,16 +39,10 @@ export function Year() {
         <SelectGroup>
           <SelectLabel>Vehicle year</SelectLabel>
           {years.map((item) => (
-            <SelectItem value={item.name}>
-              {" "}
+            <SelectItem key={item.id} value={item.name}>
               {item.name}
             </SelectItem>
           ))}
-          {/* <SelectItem value="apple">Apple</SelectItem>
-          <SelectItem value="banana">Banana</SelectItem>
-          <SelectItem value="blueberry">Blueberry</SelectItem>
-          <SelectItem value="grapes">Grapes</SelectItem>
-          <SelectItem value="pineapple">Pineapple</SelectItem> */}
         </SelectGroup>
       </SelectContent>
     </Select>
