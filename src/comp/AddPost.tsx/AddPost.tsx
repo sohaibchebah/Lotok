@@ -16,6 +16,7 @@ import { DatePickerWithRange2 } from "./DatePickWithRange";
 import { Calculator } from "lucide-react";
 import { DatePickerWithRange3 } from "./DatePickerWithRange3";
 import { Link } from "react-router-dom";
+import { AirConditioner } from "./AirConditioner";
 import {
   Dialog,
   DialogContent,
@@ -51,6 +52,7 @@ import {
 import { Location } from "react-router-dom";
 import { useCreateUserAccount } from "/lib/react-query/queriesAndmutations.ts";
 import { City } from "./City";
+import { CarImages } from "./CarImages";
 import { useState } from "react";
 const AddPost = () => {
   const { state } = useLocation();
@@ -88,6 +90,42 @@ const AddPost = () => {
   // const example = (date: Date) => {
   //   console.log(Date);
   // };
+  interface Images {
+    id: number;
+    name: string;
+  }
+  const [items, setItems] = useState<Images[]>([]);
+
+  //  const addItem = (newItem: Images) => {
+
+  //  };
+  const [imageSrc, setImageSrc] = useState<string | null>(null);
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImageSrc(reader.result as string);
+        setItems([...items, { id: 0, name: reader.result as string }]);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const [imageSrc1, setImageSrc1] = useState<string | null>(null);
+
+  const handleFileChange1 = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImageSrc1(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const form = useForm<z.infer<typeof AddPostValidation>>({
     resolver: zodResolver(AddPostValidation),
     defaultValues: {
@@ -121,170 +159,18 @@ const AddPost = () => {
                 BOOK
               </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
-              <DialogHeader></DialogHeader>
+            <DialogContent className="">
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(Booking)}>
-                  <div className="flex flex-col items-center justify-center gap-10 ">
-                    <div className="flex  flex-col items-center gap-4">
-                      <h2 className="text-black text-sm font-semibold">
+                  <div className="flex max-lg:flex-col justify-between items-center">
+                    <div className="carimages text-center flex flex-col  max-w-[50%] pl-8">
+                      <h2 className="text-black text-sm font-semibold mb-1">
                         {" "}
-                        Price per Day
-                      </h2>
-                      <div className="flex items-center justify-between max-sm:flex-col gap-4">
-                        <div className="flex  items-center gap-4 flex-col">
-                          <FormField
-                            control={form.control}
-                            name="imageOne"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormControl>
-                                  <input
-                                    type="file"
-                                    accept="image/*"
-                                    className="text-secondary-gray"
-                                    placeholder="imageOne "
-                                  />
-                                </FormControl>
-                              </FormItem>
-                            )}
-                          />
-                          <FormField
-                            control={form.control}
-                            name="imageTwo"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormControl>
-                                  <input
-                                    type="file"
-                                    accept="image/*"
-                                    className="text-secondary-gray"
-                                    placeholder="imageTwo "
-                                  />
-                                </FormControl>
-                              </FormItem>
-                            )}
-                          />
-                          <FormField
-                            control={form.control}
-                            name="PricePerDay"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormControl>
-                                  <Input
-                                    id="PricePerDay"
-                                    placeholder="Price Per Day"
-                                    className="w-[150px]"
-                                  />
-                                </FormControl>
-                              </FormItem>
-                            )}
-                          />
-                        </div>
-                        <div className="flex  items-center gap-4 flex-col">
-                          <FormField
-                            control={form.control}
-                            name="PricePerWeek"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormControl>
-                                  <Input
-                                    id="PricePerWeek"
-                                    placeholder="Price Per Week"
-                                    className="w-[150px]"
-                                  />
-                                </FormControl>
-                              </FormItem>
-                            )}
-                          />
-                        </div>
-                        <div className="flex  items-center gap-4 flex-col">
-                          <FormField
-                            control={form.control}
-                            name="Number"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormControl>
-                                  <Input
-                                    id="Number"
-                                    placeholder=" car Number"
-                                    className="w-[150px]"
-                                  />
-                                </FormControl>
-                              </FormItem>
-                            )}
-                          />
-                        </div>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-center gap-4">
-                      <h2 className="text-black text-sm font-semibold">
-                        {" "}
-                        Driving Licence info
-                      </h2>
-                      <div className="mx-auto flex  flex-col items-center gap-4">
-                        <h2 className="text-black text-sm font-semibold">
-                          {" "}
-                          Driving Licence image
-                        </h2>
-                        <FormField
-                          control={form.control}
-                          name="carte_grise"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormControl>
-                                <input
-                                  type="file"
-                                  accept="image/*"
-                                  className="text-secondary-gray"
-                                  placeholder="carte_grise "
-                                />
-                              </FormControl>
-                            </FormItem>
-                          )}
-                        />
-                        <FormField
-                          control={form.control}
-                          name="la_surance"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormControl>
-                                <input
-                                  type="file"
-                                  accept="image/*"
-                                  className="text-secondary-gray"
-                                  placeholder="la_surance "
-                                />
-                              </FormControl>
-                            </FormItem>
-                          )}
-                        />
-                        <FormField
-                          control={form.control}
-                          name="Scanner"
-                          render={({ field }) => (
-                            <FormItem>
-                              <FormControl>
-                                <input
-                                  type="file"
-                                  accept="image/*"
-                                  className="text-secondary-gray"
-                                  placeholder="Scanner "
-                                />
-                              </FormControl>
-                            </FormItem>
-                          )}
-                        />
-                      </div>
-                    </div>
-                    <div className="mx-auto flex  flex-col items-center gap-4">
-                      <h2 className="text-black text-sm font-semibold">
-                        {" "}
-                        Driving Licence image
+                        Add Your Car's Images
                       </h2>
                       <FormField
                         control={form.control}
-                        name="driving_license"
+                        name="Scanner"
                         render={({ field }) => (
                           <FormItem>
                             <FormControl>
@@ -292,40 +178,186 @@ const AddPost = () => {
                                 type="file"
                                 accept="image/*"
                                 className="text-secondary-gray"
-                                placeholder="Driving licence's "
+                                placeholder="Scanner"
+                                onChange={handleFileChange}
                               />
                             </FormControl>
                           </FormItem>
                         )}
                       />
-                    </div>
-                    <div className="flex flex-col items-center">
-                      <h2 className="text-black text-sm font-semibold">
-                        {" "}
-                        Booking Time
-                      </h2>
                       <div>
+                        <CarImages imageList={items} />
+                      </div>
+                    </div>{" "}
+                    <div className="flex flex-col items-center justify-center gap-4 ">
+                      <div className="flex  flex-col items-center gap-2">
+                        <h2 className="text-black text-sm font-semibold">
+                          {" "}
+                          Price
+                        </h2>
+                        <div className="flex items-center justify-between  gap-2">
+                          <div className="flex  items-center gap-2 flex-col">
+                            <FormField
+                              control={form.control}
+                              name="PricePerDay"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormControl>
+                                    <Input
+                                      id="PricePerDay"
+                                      placeholder="Price Per Day"
+                                      className="w-[150px]"
+                                    />
+                                  </FormControl>
+                                </FormItem>
+                              )}
+                            />
+                          </div>
+                          <div className="flex  items-center gap-3 flex-col">
+                            <FormField
+                              control={form.control}
+                              name="PricePerWeek"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormControl>
+                                    <Input
+                                      id="PricePerWeek"
+                                      placeholder="Price Per Week"
+                                      className="w-[150px]"
+                                    />
+                                  </FormControl>
+                                </FormItem>
+                              )}
+                            />
+                          </div>
+                          <div className="flex  items-center gap-2 flex-col"></div>
+                        </div>
+                      </div>
+                      <div>
+                        <h2 className="text-black text-sm font-semibold mb-2 text-center">
+                          {" "}
+                          Car Number
+                        </h2>
+                        <FormField
+                          control={form.control}
+                          name="Number"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormControl>
+                                <Input
+                                  type="text"
+                                  id="Number"
+                                  placeholder=" car Number"
+                                  className="w-[180px]"
+                                  {...field}
+                                />
+                              </FormControl>
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="flex flex-col items-center gap-2">
+                        <div className="mx-auto flex  flex-col items-center gap-2">
+                          <h2 className="text-black text-sm font-semibold">
+                            {" "}
+                            Gray Card
+                          </h2>
+                          <FormField
+                            control={form.control}
+                            name="carte_grise"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormControl>
+                                  <input
+                                    type="file"
+                                    accept="image/*"
+                                    className="text-secondary-gray"
+                                    placeholder="carte_grise "
+                                  />
+                                </FormControl>
+                              </FormItem>
+                            )}
+                          />
+                          <h2 className="text-black text-sm font-semibold">
+                            {" "}
+                            Esurance
+                          </h2>
+                          <FormField
+                            control={form.control}
+                            name="la_surance"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormControl>
+                                  <input
+                                    type="file"
+                                    accept="image/*"
+                                    className="text-secondary-gray"
+                                    placeholder="la_surance "
+                                  />
+                                </FormControl>
+                              </FormItem>
+                            )}
+                          />
+                          <h2 className="text-black text-sm font-semibold">
+                            {" "}
+                            Scanner
+                          </h2>
+                          <FormField
+                            control={form.control}
+                            name="Scanner"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormControl>
+                                  <input
+                                    type="file"
+                                    accept="image/*"
+                                    className="text-secondary-gray"
+                                    placeholder="Scanner "
+                                  />
+                                </FormControl>
+                              </FormItem>
+                            )}
+                          />
+                        </div>
+                      </div>
+
+                      <div className="flex flex-col items-center mb-1">
+                        <h2 className="text-black text-sm font-semibold">
+                          {" "}
+                          Not Available In
+                        </h2>
+
+                        <FormField
+                          control={form.control}
+                          name="date_from"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormControl>
+                                <DatePickerWithRange3
+                                  rangefrom={changeRange}
+                                  rangeto={changeRangeto}
+                                />
+                              </FormControl>
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+
+                      <div className="mb-">
                         <City onPaymentChange={handleSelect}> </City>
                       </div>
-                      <FormField
-                        control={form.control}
-                        name="date_from"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormControl>
-                              <DatePickerWithRange3
-                                rangefrom={changeRange}
-                                rangeto={changeRangeto}
-                              />
-                            </FormControl>
-                          </FormItem>
-                        )}
-                      />
-                    </div>
+                      <div className="mb-4">
+                        <AirConditioner onPaymentChange={handleSelect}>
+                          {" "}
+                        </AirConditioner>
+                      </div>
 
-                    <DialogFooter>
-                      <Button type="submit">BOOK</Button>
-                    </DialogFooter>
+                      <DialogFooter>
+                        <Button className="w-[250px]" type="submit">
+                          Post
+                        </Button>
+                      </DialogFooter>
+                    </div>
                   </div>
                 </form>
               </Form>

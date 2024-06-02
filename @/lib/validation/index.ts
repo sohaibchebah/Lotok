@@ -1,5 +1,6 @@
 import { z } from "zod";
 const phoneRegex = new RegExp(/^(00213|\+213|0)(5|6|7)([0-9]){8}$/);
+const CarNumber = new RegExp(/^[a-zA-Z0-9]{15}$/);
 
 export const SignupValidation = z.object({
   first_name: z.string().min(2, { message: "Too short" }),
@@ -34,7 +35,7 @@ export const postValidation = z.object({
 export const AddPostValidation = z.object({
   PricePerDay: z.string(),
   PricePerWeek: z.string(),
-  Number: z.string().regex(phoneRegex, "Invalid Number!"),
+  Number: z.string().min(15, { message: "should be 15 characters " }).max(15),
   carte_grise: z.string(),
   la_surance: z.string(),
   Scanner: z.string(),

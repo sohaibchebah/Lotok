@@ -24,15 +24,15 @@ const ReservationList = ({List} : Props) => {
       {List.map((command) => (
         <div
           key={command.id}
-          className="car-rental-command flex flex-col items-center justify-center text-black bg-light-gray text-md   p-4 gap-4   hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)]  "
+          className="car-rental-command flex flex-col items-center justify-center text-black bg-light-pink text-md   p-4 gap-4   hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)]  "
         >
           <div
             className="flex items-center font-bold 
  justify-between gap-4 mb-2 "
           >
             {" "}
-            <h2 className="">{command.brand}</h2>
-            <h2 className="">{command.model}</h2>
+            <h2 className=" text-primary-red-100">{command.brand}</h2>
+            <h2 className="text-primary-red">{command.model}</h2>
           </div>
           <div className="flex items-center justify-between gap-4 mb-2 ">
             <p className="flex flex-col items-center justify-center gap-1 ">
