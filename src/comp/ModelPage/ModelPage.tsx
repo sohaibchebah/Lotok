@@ -3,6 +3,7 @@ import FakeModel from "./FakeModelData";
 import { useLocation } from "react-router-dom";
 import NavforOtherPages from "../NavforOtherPages";
 import Underline from "../Underline";
+import ModelList from "./ModelList";
 
 const ModelPage = () => {
   //   const location = useLocation();
@@ -29,7 +30,7 @@ const ModelPage = () => {
         <Underline />
       </div>
       <div>
-        <FakeModel />
+        <ModelList carList={state.Models} />
       </div>
     </>
   );

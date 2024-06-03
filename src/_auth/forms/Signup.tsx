@@ -2,7 +2,7 @@ import { useMutation } from "react-query";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import { Button } from "../../../@/components/ui/button";
-import axios from 'axios';
+import axios from "axios";
 import { useQuery } from "react-query";
 import Profile from "./Profile";
 
@@ -23,15 +23,22 @@ import { useForm } from "react-hook-form";
 import { SignupValidation } from "../../../@/lib/validation/index";
 import { useCreateUserAccount } from "/lib/react-query/queriesAndmutations.ts";
 import { useState } from "react";
+import BaseUrl from "./BaseUrl";
 const Signup = () => {
   const [err, setErr] = useState<String>("");
+  const [baseUrl, setBaseUrl] = useState<string>("http://192.168.173.21:8000");
 
-  //    
+  const handleDataChange = (url: string) => {
+    setBaseUrl(url);
+    console.log(url);
+    console.log(baseUrl);
+  };
+  //
   // const [isLoading , setisLoading] = useState();
   const isLoading = false;
   // const mutation = useMutation(
   // async (values) => {
-  //     const response = await fetch("http://127.0.0.1:8000/api/users/", {
+  //     const response = await fetch("http://192.168.172.217:8000/api/users/", {
   //       method: "POST",
   //       headers: {
   //         "Content-Type": "application/json",
@@ -51,39 +58,36 @@ const Signup = () => {
   // {
   //   onSuccess: (data) => {
   //     console.log("Data created successfully:", data);
-      
+
   //   },
   //   onError: (error) => {
   //     console.error("Error creating data:", error);
   //   },
   // }
   // );
-   
-async function createUser(userData) {
-  try {
-    const response = await axios.post(
-      "http://127.0.0.1:8000/api/users/",
-      JSON.stringify(userData),
-      {
-        headers: { "Content-Type": "application/json" },
+
+  async function createUser(userData) {
+    try {
+      const response = await axios.post(
+        `${baseUrl}/api/users/`,
+        JSON.stringify(userData),
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+
+      if (response.status === 201) {
+        console.log("User created successfully:", response.data);
+        <Navigate to="/Profile"></Navigate>;
+      } else {
+        console.error("Error creating user:", response.statusText);
       }
-    );
-
-    if (response.status === 201) {
-      console.log("User created successfully:", response.data);
-      <Navigate to='/Profile'></Navigate>;
-    } else {
-      console.error("Error creating user:", response.statusText);
+    } catch (e: any) {
+      console.error(e.response?.data.email);
+      setErr(e.response?.data.email);
     }
-  } catch (e:any) {
-    console.error(e.response?.data.email);
-    setErr(e.response?.data.email);
   }
-}
 
-
-  
-  
   const form = useForm<z.infer<typeof SignupValidation>>({
     resolver: zodResolver(SignupValidation),
     defaultValues: {
@@ -91,13 +95,13 @@ async function createUser(userData) {
       last_name: "",
       email: "",
       password: "",
-      re_password : "",
+      re_password: "",
     },
   });
   // async function onSubmit(values : any) {
   //   try {
   //     const  response = await mutation.mutate(values);
-       
+
   //     // console.log(JSON.stringify(values));
 
   //    } catch (error) {
@@ -182,7 +186,6 @@ async function createUser(userData) {
                     {...field}
                   />
                 </FormControl>
-
                 <FormMessage />
               </FormItem>
             )}
@@ -234,6 +237,7 @@ async function createUser(userData) {
           />
         </form>
       </Form>
+      <BaseUrl changeUrl={handleDataChange} />
     </>
   );
 };
