@@ -146,17 +146,17 @@ const AddPost = () => {
   }
   return (
     <div>
-      <NavforOtherPages />
+      
       <div className="mt-[140px]  container flex max-lg:flex-col max-lg:gap-4 justify-between">
         <ul className="images  text-center lg:w-[66%] xl:w-[60%]">
           <Dialog>
             <DialogTrigger asChild>
               <Button
                 variant="outline"
-                className=" -mt-1 w-full h-11 shadow-xl shadow-light-pink mb-6 bg-primary-red text-white hover:bg-black hover:text-white"
+                className=" -mt-1 w-[200px] h-11 shadow-xl shadow-light-pink mb-6 bg-primary-red text-white hover:bg-black hover:text-white"
               >
                 {" "}
-                BOOK
+                Add Post
               </Button>
             </DialogTrigger>
             <DialogContent className="">
