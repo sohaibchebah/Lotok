@@ -36,11 +36,13 @@ const Login = () => {
 
   async function logUser(userData:any) {
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/jwt/create/',
-        JSON.stringify(userData), {
+      const response = await axios.post(
+        "http://192.168.172.217:8000/api/jwt/create/",
+        JSON.stringify(userData),
+        {
           headers: { "Content-Type": "application/json" },
-          
-      });
+        }
+      );
       //  <Navigate to='/Profile'></Navigate>;
       
         // console.log(userData);
@@ -53,28 +55,7 @@ const Login = () => {
          
         
       console.log("user loged successefily", response.data);
-      const authStr = 'Bearer ' + accessToken;
-      async function userInfo() {
-        try {
-          const response = await axios.get(
-            "http://127.0.0.1:8000/api/users/me/",
-            { headers: { Authorization: authStr } }
-          );
-          
-          setfirstName(response?.data.first_name);
-          setlastName(response?.data.last_name);
-          setId(response?.data.id);
-          console.log(response.data);
-          console.log(firstName, lastName, id);
-          // setlastName(response?.data.last_name);
-          // setId(response?.data.id);
-          // console.log('first : ' + firstName + ' last : ' + lastName + ' id :' + id);
-          
-        } catch (e: any) {
-          console.log(e.response.data.detail);
-        }
-      }
-      userInfo();
+      
       
       
         
@@ -88,6 +69,7 @@ const Login = () => {
       setErr(e.response.data.detail);
     }
   }
+  
   const isLoading = false;
   const form = useForm<z.infer<typeof LoginValidation>>({
     resolver: zodResolver(LoginValidation),

@@ -92,7 +92,7 @@ const Post = () => {
   // const example = (date: Date) => {
   //   console.log(Date);
   // };
-  const form = useForm<z.infer<typeof postValidation>>({
+  const form1 = useForm<z.infer<typeof postValidation>>({
     resolver: zodResolver(postValidation),
     defaultValues: {
       first_name: "",
@@ -126,8 +126,8 @@ const Post = () => {
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
               <DialogHeader></DialogHeader>
-              <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)}>
+              <Form {...form1}>
+                <form onSubmit={form1.handleSubmit(onSubmit)}>
                   <div className="flex flex-col items-center justify-center gap-10 ">
                     <div className="flex  flex-col items-center gap-4">
                       <h2 className="text-black text-sm font-semibold">
@@ -137,7 +137,7 @@ const Post = () => {
                       <div className="flex items-center justify-between max-sm:flex-col gap-4">
                         <div className="flex  items-center gap-4 flex-col">
                           <FormField
-                            control={form.control}
+                            control={form1.control}
                             name="first_name"
                             render={({ field }) => (
                               <FormItem>
@@ -175,7 +175,7 @@ const Post = () => {
                         </div>
                         <div className="flex  items-center gap-4 flex-col">
                           <FormField
-                            control={form.control}
+                            control={form1.control}
                             name="phone_number"
                             render={({ field }) => (
                               <FormItem>
@@ -202,7 +202,7 @@ const Post = () => {
 
                       <div className="flex   items-center gap-4 max-sm:flex-col">
                         <FormField
-                          control={form.control}
+                          control={form1.control}
                           name="driving_license"
                           render={({ field }) => (
                             <FormItem>
@@ -212,6 +212,7 @@ const Post = () => {
                                   id=" Driving licence's Nmber"
                                   placeholder=" Driving licence's Number "
                                   className="w-[200px]"
+                                  
                                 />
                               </FormControl>
                             </FormItem>
