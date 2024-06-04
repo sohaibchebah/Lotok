@@ -75,6 +75,7 @@ const Login = () => {
       setErr(e.response.data.detail);
     }
   }
+  
   const isLoading = false;
   const form = useForm<z.infer<typeof LoginValidation>>({
     resolver: zodResolver(LoginValidation),

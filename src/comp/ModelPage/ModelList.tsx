@@ -7,7 +7,7 @@ interface CarDetails {
   id: number;
   make: string;
   model: string;
-  image: { id: number; name: string };
+  main_image_url: string;
 }
 interface CarListProps {
   carList: CarDetails[];
@@ -25,15 +25,20 @@ const ModelList = ({ carList }: CarListProps) => {
           <li className=" px-4 py-4 bg-light-gray-100 w-full flex justify-between items-center max-md:flex-col max-md:gap-12 shadow-[rgba(17,_17,_26,_0.1)_0px_0px_16px]">
             <div className="flex justify-center items-center gap-0  md:gap-10 max-md:flex-col">
               <img
-                src={item.image.name}
+                src={item.main_image_url}
                 className="max-h-[160px]"
                 alt="model"
               />
               <h2 className="font-bold  text-2xl"> {item.model}</h2>
             </div>
-                <Link
-                    to={"/VehiclesByBrands"}
-                state={{id: item.id, name:item.model, image: item.image.name }}>
+            <Link
+              to={"/VehiclesByBrands"}
+              state={{
+                id: item.id,
+                name: item.model,
+                image: item.main_image_url,
+              }}
+            >
               <Button className="w-[100px] shadow-xl shadow-light-pink">
                 {" "}
                 BOOK
