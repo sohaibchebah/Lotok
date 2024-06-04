@@ -6,7 +6,7 @@ import Underline from "@/comp/Underline";
 import { useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquarePlus } from "@fortawesome/free-solid-svg-icons";
-
+import { Button } from "../../../@/components/ui/button";
 const Yprofile = () => {
   const { state } = useLocation();
 
@@ -34,12 +34,17 @@ const Yprofile = () => {
       <div className="-mt-[15px] mb-[20px]">
         <Underline />
       </div>
-      <ul className="flex justify-center items-center gap-4 w-full">
+      <ul className="flex justify-center items-center gap-4 w-full h-3 mb-3">
+        <li className="flex justify-center items-center ">
+          <AddPost />
+        </li>
+        <li className="flex justify-center items-center ">
+          <Button></Button>
+        </li>
         <li className="flex justify-center items-center ">
           <AddPost />
         </li>
       </ul>
-      <h2 className=" mb-3 text-secondary-gray">Your Vehicles</h2>
     </div>
   );
 };
