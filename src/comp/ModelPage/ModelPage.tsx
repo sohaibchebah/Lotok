@@ -10,6 +10,7 @@ const ModelPage = () => {
   //   const queryParams = new URLSearchParams(location.search);
   //   const receivedData = queryParams.get(state);
   const { state } = useLocation();
+  // const
   //do stuff with state obj
 
   return (

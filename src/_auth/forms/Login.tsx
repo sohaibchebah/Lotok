@@ -40,14 +40,11 @@ const Login = () => {
   const [id, setId] = useState<number>();
   const [img, setImg] = useState<string>("");
   const [status, setStatus] = useState<number>();
-  const [baseUrl, setBaseUrl] = useState<string>(
-    "http://192.168.4.20:8000/api/jwt/create/"
-  );
+  const [baseUrl, setBaseUrl] = useState<string>("http://192.168.4.20:8000");
+  // const [authStr, setauthStr] = useState<string>("");
 
   const handleDataChange = (url: string) => {
-    setBaseUrl(url);
-    console.log(url);
-    console.log(baseUrl);
+    // setBaseUrl(url);
   };
   async function logUser(userData: any) {
     try {
@@ -69,13 +66,14 @@ const Login = () => {
       // window.location.href = '/Profile';
       setSuccess("user loged successefily");
       console.log("user loged successefily", response.data);
-      const authStr = "Bearer " + accessToken;
+
+      // console.log(accessToken);
     } catch (e: any) {
       console.log(e);
       setErr(e.response.data.detail);
     }
   }
-  
+
   const isLoading = false;
   const form = useForm<z.infer<typeof LoginValidation>>({
     resolver: zodResolver(LoginValidation),
@@ -90,14 +88,15 @@ const Login = () => {
   async function userInfo() {
     try {
       const response = await axios.get(`${baseUrl}/api/users/me/`, {
-        headers: { Authorization: authStr },
+        headers: { Authorization: `Bearer  ${accessToken}` },
       });
+      console.log(`Bearer  ${accessToken}`);
       setfirstName(response?.data.first_name);
       setlastName(response?.data.last_name);
       setImg(response?.data.image_url);
       setId(response?.data.id);
       console.log(response.data);
-      console.log(firstName, lastName, id);
+
       // setlastName(response?.data.last_name);
       // setId(response?.data.id);
       // console.log('first : ' + firstName + ' last : ' + lastName + ' id :' + id);
@@ -105,12 +104,16 @@ const Login = () => {
       console.log(e.response.data.detail);
     }
   }
-  userInfo();
+  const handleSubmit = async (data: any) => {
+    await logUser(data);
+    await userInfo();
+  };
+  // userInfo();
   return (
     <>
       <Form {...form}>
         <form
-          onSubmit={form.handleSubmit(logUser)}
+          onSubmit={form.handleSubmit(handleSubmit)}
           className="flex flex-col w-full items-center h-full justify-center"
         >
           <h2 className="  font-bold text-3xl mb-[50px]">Login</h2>
@@ -170,7 +173,7 @@ const Login = () => {
                     state={{
                       firstName: firstName,
                       lastName: lastName,
-                      img: img, 
+                      img: img,
                     }}
                     to={"/Yprofile"}
                     className="text-black font-semibold text-small-semibold ml-1"
