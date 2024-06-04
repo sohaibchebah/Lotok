@@ -41,7 +41,7 @@ const Login = () => {
   const [img, setImg] = useState<string>("");
   const [status, setStatus] = useState<number>();
   const [baseUrl, setBaseUrl] = useState<string>(
-    "http://192.168.173.21:8000/api/jwt/create/"
+    "http://192.168.4.20:8000/api/jwt/create/"
   );
 
   const handleDataChange = (url: string) => {
@@ -49,10 +49,25 @@ const Login = () => {
     console.log(url);
     console.log(baseUrl);
   };
+  async function getData(accessToken) {
+    try {
+      const response2 = await axios.get(`192.168.4.20:8000/api/users/me/`, {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      });
+      setfirstName(response2?.data.first_name);
+      setlastName(response2?.data.last_name);
+      setImg(response2?.data.image_url);
+      setId(response2?.data.id);
+      console.log(response2.data);
+      console.log(firstName, lastName, id);
+    } catch (e:any) {
+      console.log(e.response2.data.detail);
+    }
+  }
   async function logUser(userData: any) {
     try {
       const response = await axios.post(
-        `${baseUrl}/api/jwt/create/`,
+        `192.168.4.20:8000/api/jwt/create/`,
         JSON.stringify(userData),
         {
           headers: { "Content-Type": "application/json" },
@@ -69,11 +84,23 @@ const Login = () => {
       // window.location.href = '/Profile';
       setSuccess("user loged successefily");
       console.log("user loged successefily", response.data);
-      const authStr = "Bearer " + accessToken;
+      const authStr = "Bearer  " + accessToken;
+      
     } catch (e: any) {
       console.log(e);
       setErr(e.response.data.detail);
+      // console.log(e.response2.data.detail);
     }
+    
+      
+      
+    
+      
+    
+  }
+  async function handleSubmit(userData:any, accessToken:any) {
+    await logUser(userData);
+    await getData(accessToken);
   }
   
   const isLoading = false;
@@ -87,25 +114,25 @@ const Login = () => {
   // function onSubmit(values: z.infer<typeof LoginValidation>) {
   //   console.log(values);
   // }
-  async function userInfo() {
-    try {
-      const response = await axios.get(`${baseUrl}/api/users/me/`, {
-        headers: { Authorization: authStr },
-      });
-      setfirstName(response?.data.first_name);
-      setlastName(response?.data.last_name);
-      setImg(response?.data.image_url);
-      setId(response?.data.id);
-      console.log(response.data);
-      console.log(firstName, lastName, id);
-      // setlastName(response?.data.last_name);
-      // setId(response?.data.id);
-      // console.log('first : ' + firstName + ' last : ' + lastName + ' id :' + id);
-    } catch (e: any) {
-      console.log(e.response.data.detail);
-    }
-  }
-  userInfo();
+  // async function userInfo() {
+  //   try {
+  //     const response = await axios.get(`${baseUrl}/api/users/me/`, {
+  //       headers: { Authorization: authStr },
+  //     });
+  //     setfirstName(response?.data.first_name);
+  //     setlastName(response?.data.last_name);
+  //     setImg(response?.data.image_url);
+  //     setId(response?.data.id);
+  //     console.log(response.data);
+  //     console.log(firstName, lastName, id);
+  //     // setlastName(response?.data.last_name);
+  //     // setId(response?.data.id);
+  //     // console.log('first : ' + firstName + ' last : ' + lastName + ' id :' + id);
+  //   } catch (e: any) {
+  //     console.log(e.response.data.detail);
+  //   }
+  // }
+  // userInfo();
   return (
     <>
       <Form {...form}>
