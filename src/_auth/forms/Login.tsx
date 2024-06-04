@@ -40,30 +40,12 @@ const Login = () => {
   const [id, setId] = useState<number>();
   const [img, setImg] = useState<string>("");
   const [status, setStatus] = useState<number>();
-  const [baseUrl, setBaseUrl] = useState<string>(
-    "http://192.168.4.20:8000/api/jwt/create/"
-  );
+  const [baseUrl, setBaseUrl] = useState<string>("http://192.168.4.20:8000");
+  // const [authStr, setauthStr] = useState<string>("");
 
   const handleDataChange = (url: string) => {
-    setBaseUrl(url);
-    console.log(url);
-    console.log(baseUrl);
+    // setBaseUrl(url);
   };
-  async function getData(accessToken) {
-    try {
-      const response2 = await axios.get(`192.168.4.20:8000/api/users/me/`, {
-        headers: { Authorization: `Bearer ${accessToken}` },
-      });
-      setfirstName(response2?.data.first_name);
-      setlastName(response2?.data.last_name);
-      setImg(response2?.data.image_url);
-      setId(response2?.data.id);
-      console.log(response2.data);
-      console.log(firstName, lastName, id);
-    } catch (e:any) {
-      console.log(e.response2.data.detail);
-    }
-  }
   async function logUser(userData: any) {
     try {
       const response = await axios.post(
@@ -84,8 +66,8 @@ const Login = () => {
       // window.location.href = '/Profile';
       setSuccess("user loged successefily");
       console.log("user loged successefily", response.data);
-      const authStr = "Bearer  " + accessToken;
-      
+
+      // console.log(accessToken);
     } catch (e: any) {
       console.log(e);
       setErr(e.response.data.detail);
@@ -98,11 +80,8 @@ const Login = () => {
       
     
   }
-  async function handleSubmit(userData:any, accessToken:any) {
-    await logUser(userData);
-    await getData(accessToken);
-  }
   
+
   const isLoading = false;
   const form = useForm<z.infer<typeof LoginValidation>>({
     resolver: zodResolver(LoginValidation),
@@ -114,30 +93,35 @@ const Login = () => {
   // function onSubmit(values: z.infer<typeof LoginValidation>) {
   //   console.log(values);
   // }
-  // async function userInfo() {
-  //   try {
-  //     const response = await axios.get(`${baseUrl}/api/users/me/`, {
-  //       headers: { Authorization: authStr },
-  //     });
-  //     setfirstName(response?.data.first_name);
-  //     setlastName(response?.data.last_name);
-  //     setImg(response?.data.image_url);
-  //     setId(response?.data.id);
-  //     console.log(response.data);
-  //     console.log(firstName, lastName, id);
-  //     // setlastName(response?.data.last_name);
-  //     // setId(response?.data.id);
-  //     // console.log('first : ' + firstName + ' last : ' + lastName + ' id :' + id);
-  //   } catch (e: any) {
-  //     console.log(e.response.data.detail);
-  //   }
-  // }
+  async function userInfo() {
+    try {
+      const response = await axios.get(`${baseUrl}/api/users/me/`, {
+        headers: { Authorization: `Bearer  ${accessToken}` },
+      });
+      console.log(`Bearer  ${accessToken}`);
+      setfirstName(response?.data.first_name);
+      setlastName(response?.data.last_name);
+      setImg(response?.data.image_url);
+      setId(response?.data.id);
+      console.log(response.data);
+
+      // setlastName(response?.data.last_name);
+      // setId(response?.data.id);
+      // console.log('first : ' + firstName + ' last : ' + lastName + ' id :' + id);
+    } catch (e: any) {
+      console.log(e.response.data.detail);
+    }
+  }
+  const handleSubmit = async (data: any) => {
+    await logUser(data);
+    await userInfo();
+  };
   // userInfo();
   return (
     <>
       <Form {...form}>
         <form
-          onSubmit={form.handleSubmit(logUser)}
+          onSubmit={form.handleSubmit(handleSubmit)}
           className="flex flex-col w-full items-center h-full justify-center"
         >
           <h2 className="  font-bold text-3xl mb-[50px]">Login</h2>
@@ -197,7 +181,7 @@ const Login = () => {
                     state={{
                       firstName: firstName,
                       lastName: lastName,
-                      img: img, 
+                      img: img,
                     }}
                     to={"/Yprofile"}
                     className="text-black font-semibold text-small-semibold ml-1"

@@ -26,7 +26,7 @@ import { useState } from "react";
 import BaseUrl from "./BaseUrl";
 const Signup = () => {
   const [err, setErr] = useState<String>("");
-  const [baseUrl, setBaseUrl] = useState<string>("http://192.168.173.21:8000");
+  const [baseUrl, setBaseUrl] = useState<string>("http://192.168.4.20:8000");
 
   const handleDataChange = (url: string) => {
     setBaseUrl(url);

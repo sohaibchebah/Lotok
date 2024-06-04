@@ -14,10 +14,10 @@ interface Brands {
   image: string;
 }
 interface Models {
-  id: number; 
-  make: string; 
-  model: string; 
-  main_image_url: string; 
+  id: number;
+  make: string;
+  model: string;
+  main_image_url: string;
 }
 
 const items: Brands[] = [
@@ -44,26 +44,24 @@ const items: Brands[] = [
 ];
 
 const BrandsList = () => {
-const [models, setModels] = useState<Models[]>([]); 
+  const [models, setModels] = useState<Models[]>([]);
 
   async function getCars(name: any) {
     try {
       const response = await axios.get(
-        "http://192.168.4.22:8000/api/listings/",
+        "http://192.168.4.20:8000/api/listings/",
         {
           headers: { "Content-Type": "application/json" },
-          params: { make:  name  },
+          params: { make: name },
         }
       );
       console.log(response.data);
-      setModels(response.data); 
-      
+      setModels(response.data);
     } catch (error) {
       console.log(error);
     }
   }
   return (
-
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4  gap-4 mb-[60px] ">
       {items.map((item) => (
         <li
@@ -73,7 +71,12 @@ const [models, setModels] = useState<Models[]>([]);
         >
           <Link
             to={"/Models"}
-            state={{ id: item.id, name: item.name, img: item.image , Models: models}}
+            state={{
+              id: item.id,
+              name: item.name,
+              img: item.image,
+              Models: models,
+            }}
           >
             <a className="h-full w-full p-10 flex justify-center items-center">
               <img src={item.image} alt={item.name} className="" />
