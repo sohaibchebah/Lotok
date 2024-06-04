@@ -41,7 +41,7 @@ const Login = () => {
   const [img, setImg] = useState<string>("");
   const [status, setStatus] = useState<number>();
   const [baseUrl, setBaseUrl] = useState<string>(
-    "http://192.168.173.21:8000/api/jwt/create/"
+    "http://192.168.4.20:8000/api/jwt/create/"
   );
 
   const handleDataChange = (url: string) => {

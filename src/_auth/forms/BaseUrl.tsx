@@ -6,12 +6,11 @@ interface Props {
 }
 
 const BaseUrl = ({ changeUrl }: Props) => {
-  const baseUrl = "http://192.168.173.21:8000";
+  const baseUrl = "http://192.168.4.20:8000";
 
   const change = () => {
     changeUrl(baseUrl);
   };
-
   return (
     <div onClick={change}>
       <Button className="w-[0px] h-[1px] bg-transparent text-black hover:bg-transparent ">
