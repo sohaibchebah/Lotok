@@ -96,7 +96,9 @@ const Login = () => {
   async function userInfo() {
     try {
       const response = await axios.get(`${baseUrl}/api/users/me/`, {
-        headers: { Authorization: `Bearer  ${accessToken}` },
+        headers: {
+          Authorization: `Bearer  ${accessToken}`,
+        },
       });
       console.log(`Bearer  ${accessToken}`);
       setfirstName(response?.data.first_name);
@@ -114,6 +116,7 @@ const Login = () => {
   }
   const handleSubmit = async (data: any) => {
     await logUser(data);
+    //  await new Promise((resolve) => setTimeout(resolve, 10000));
     await userInfo();
   };
   // userInfo();
