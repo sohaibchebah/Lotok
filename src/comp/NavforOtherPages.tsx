@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { Button } from "../../@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import LogoImg from "../../public/images/logo.png";
+import { Link } from "react-router-dom";
 interface Props {
   label: string;
   url: string;
@@ -37,16 +38,21 @@ const NavforOtherPages = () => {
         history("/");
       };
   const Navlinks: Props[] = [
-    { label: "Home", url: "./home.tsx" },
-    { label: "Brands", url: "./Brands.tsx" },
-    { label: "Vehicles", url: "./Vehicles.tsx" },
-    { label: "About", url: "./About.tsx" },
+    { label: "Home", url: "/" },
+    { label: "Brands", url: "/Brands" },
+    { label: "Vehicles", url: "/VehiclesPage" },
+    { label: "About", url: "/About" },
   ];
   return (
     <header className="absolute z-50 -top-3 w-[100%] ">
       <div className="container bg-white fixed top right-1/2 translate-x-1/2  flex justify-between lg:items-center items-start min-[1170px]:w-[1100px] min-[1300px]:w-[1270px] ">
         <div className="logoImg">
-          <img src={LogoImg} onClick={handleClick} className=" cursor-pointer object-contain h-[150px]" alt="#" />
+          <img
+            src={LogoImg}
+            onClick={handleClick}
+            className=" cursor-pointer object-contain h-[150px]"
+            alt="#"
+          />
         </div>
 
         <div className=" max-lg:pt-14  list flex flex-col justify-center items-center">
@@ -70,7 +76,7 @@ const NavforOtherPages = () => {
               ))}
               <Button className=" ml-2 px-4 py-2 rounded-lg bg-black text-white ">
                 {" "}
-                Log In
+                <Link to={'/Login'}>Log In</Link>
               </Button>
             </ul>
           )}

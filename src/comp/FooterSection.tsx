@@ -23,17 +23,20 @@ const FooterSection = () => {
         <h2 className=" mb-5 font-semibold text-lg text-white ">Follow us </h2>
         <ul className="brandss flex flex-row gap-4 mb-8">
           <li>
-            <a href="https://web.facebook.com/profile.php?id=100012635053612&locale=fr_FR">
+            <a href="https://www.facebook.com/profile.php?id=100049503077961&mibextid=ZbWKwL">
               <FontAwesomeIcon icon={faFacebook} className="text-white h-6" />
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="#" target="_blank">
               <FontAwesomeIcon icon={faTelegram} className="text-white h-6" />
             </a>
           </li>
           <li>
-            <a href="#">
+            <a
+              href="
+https://www.instagram.com/yacine_djaaraoui?igsh=MWJqdnc0dXhydTNhYg=="
+            >
               <FontAwesomeIcon icon={faInstagram} className="text-white h-6" />
             </a>
           </li>

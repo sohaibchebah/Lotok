@@ -3,6 +3,7 @@ import SpecialTiltle from "./SpecialTiltle";
 import BlueCar from "../../public/images/BmwPic.png";
 import vect from "../../public/images/Vector Line.png";
 import { Button } from "../../@/components/ui/button";
+import { Link } from "react-router-dom";
 const AboutSetction = () => {
   return (
     <div className="container">
@@ -29,7 +30,10 @@ const AboutSetction = () => {
             make your journey not only comfortable but also enriching and
             unforgettable.{" "}
           </p>
-          <Button> Rent Vehicle Now</Button>
+          <Button>
+            {" "}
+            <Link to={'/Login'}>Rent Vehicle Now</Link>{" "}
+          </Button>
         </div>
       </div>
     </div>

@@ -1,9 +1,12 @@
 import React from "react";
+import { useEffect } from "react";
 import NavforOtherPages from "../NavforOtherPages";
 import SpecialTiltle from "../SpecialTiltle";
 import BrandsListGrand from "./BrandsListGrand";
 import FooterSection from "../FooterSection";
 const BrandPage = () => {
+    
+
   return (
     <div>
       <NavforOtherPages />

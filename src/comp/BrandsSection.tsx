@@ -5,7 +5,7 @@ import ButtonOfSect from "./ButtonOfSect";
 const BrandsSection = () => {
 
   return (
-    <div>
+    <div >
       <div className="container py-[100px] ">
         <SpecialTiltle> Brands </SpecialTiltle>
         <BrandsList />

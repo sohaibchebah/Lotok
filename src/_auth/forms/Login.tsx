@@ -49,7 +49,7 @@ const Login = () => {
   async function logUser(userData: any) {
     try {
       const response = await axios.post(
-        `192.168.4.20:8000/api/jwt/create/`,
+        `${baseUrl}/api/jwt/create/`,
         JSON.stringify(userData),
         {
           headers: { "Content-Type": "application/json" },
@@ -71,16 +71,8 @@ const Login = () => {
     } catch (e: any) {
       console.log(e);
       setErr(e.response.data.detail);
-      // console.log(e.response2.data.detail);
     }
-    
-      
-      
-    
-      
-    
   }
-  
 
   const isLoading = false;
   const form = useForm<z.infer<typeof LoginValidation>>({
