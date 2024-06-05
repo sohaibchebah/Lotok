@@ -39,6 +39,7 @@ const Login = () => {
   const [success, setSuccess] = useState<String>("");
   const [id, setId] = useState<number>();
   const [img, setImg] = useState<string>("");
+  const [stuff, setStuff] = useState<boolean>(false);
   const [status, setStatus] = useState<number>();
   const [baseUrl, setBaseUrl] = useState<string>("http://192.168.4.20:8000");
   // const [authStr, setauthStr] = useState<string>("");
@@ -96,6 +97,7 @@ const Login = () => {
       setfirstName(response?.data.first_name);
       setlastName(response?.data.last_name);
       setImg(response?.data.image_url);
+      // setStuffI(response?.data.);
       setId(response?.data.id);
       console.log(response.data);
 
