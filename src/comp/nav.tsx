@@ -1,16 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "../../@/components/ui/button";
-import { useNavigate } from "react-router-dom";
 import LogoImg from "../../public/images/logo.png";
-interface Props {
-  label: string;
-  url: string;
-}
+
 const Nav = () => {
   const [isListOpen, setIsListOpen] = useState(false);
+
   useEffect(() => {
     const handleResize = () => {
       // Check if window width is higher than 1200px
@@ -26,66 +23,59 @@ const Nav = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []); // Empty
+  }, []);
+
   const toggleList = () => {
     setIsListOpen(!isListOpen);
   };
-  const history = useNavigate();
 
-  const handleClick = () => {
-    // Navigate to Component2 when the button is clicked
-    history("/");
+  const handleNavClick = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
   };
-  const Navlinks: Props[] = [
-    { label: "Home", url: "/" },
-    { label: "Brands", url: "./Brands.tsx" },
-    { label: "Vehicles", url: "./Vehicles.tsx" },
-    { label: "About", url: "./About.tsx" },
+
+  const Navlinks = [
+    { label: "Home", id: "home" },
+    { label: "Brands", id: "brands" },
+    { label: "Vehicles", id: "vehicles" },
+    { label: "About", id: "about" },
+    
   ];
-  // fixed the top nav
-  const [isScroll, setScroll] = useState(false);
-  const handleScrollDown = () => {
-    setScroll(true);
-  };
-  window.addEventListener("scroll", handleScrollDown);
+
   return (
-    <header className={" absolute z-50 -top-3 w-[100%]  "}>
-      <div
-        className={
-          " max-lg:bg-white   container max-lg:fixed top-0 max-lg:right-1/2 max-lg:translate-x-1/2 flex justify-between lg:items-center items-start min-[1170px]:w-[1100px] min-[1300px]:w-[1270px] "
-        }
-      >
+    <header className="absolute z-50 -top-3 w-[100%]">
+      <div className="max-lg:bg-white container max-lg:fixed top-0 max-lg:right-1/2 max-lg:translate-x-1/2 flex justify-between lg:items-center items-start min-[1170px]:w-[1100px] min-[1300px]:w-[1270px]">
         <div className="logoImg">
           <img
             src={LogoImg}
-            onClick={handleClick}
-            className=" cursor-pointer object-contain h-[150px]"
+            className="cursor-pointer object-contain h-[150px]"
             alt="#"
           />
         </div>
 
-        <div className=" max-lg:pt-14  list flex flex-col justify-center items-center">
+        <div className="max-lg:pt-14 list flex flex-col justify-center items-center">
           <FontAwesomeIcon
             icon={faBars}
             onClick={toggleList}
-            className="lg:hidden self-center h-8 text-black "
+            className="lg:hidden self-center h-8 text-black"
           />
 
           {isListOpen && (
-            <ul className=" w-[100%] flex xl:justify-center items-center lg:flex-row flex-col justify-around max-lg:h-[250px] max-lg max-lg:pt-5  max-lg:bg-primary-red-100 px-0">
+            <ul className="w-[100%] flex xl:justify-center items-center lg:flex-row flex-col justify-around max-lg:h-[250px] max-lg max-lg:pt-5 max-lg:bg-primary-red-100 px-0">
               {Navlinks.map((item) => (
                 <li key={item.label}>
-                  <a
-                    href={item.url}
-                    className=" lg:mx-2 px-4 py-4 my-4 text-white font-semibold max-xl:py-1 w-[100%] max-lg:hover:bg-black lg:hover:text-black transition-all ease-in"
+                  <button
+                    onClick={() => handleNavClick(item.id)}
+                    className="lg:mx-2 px-4 py-4 my-4 text-white font-semibold max-xl:py-1 w-[100%] max-lg:hover:bg-black lg:hover:text-black transition-all ease-in"
                   >
                     {item.label}
-                  </a>
+                  </button>
                 </li>
               ))}
-              <Button className=" ml-2 px-4 py-2 rounded-lg bg-black text-white ">
-                {" "}
-                Log In
+              <Button className="ml-2 px-4 py-2 rounded-lg bg-black text-white">
+                <a href="/Login">Log In</a>
               </Button>
             </ul>
           )}

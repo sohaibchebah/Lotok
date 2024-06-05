@@ -3,8 +3,12 @@ import NavforOtherPages from "../NavforOtherPages";
 import SpecialTiltle from "../SpecialTiltle";
 import FooterSection from "../FooterSection";
 import CarData from '../CardData';
-
+import { useEffect } from 'react';
 const Vehiclespage = () => {
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
+
   return (
     <div>
       <NavforOtherPages />

@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from "react";
 // import { Bm } from "../../public/images/brands/BMW.png";
 // import { Fiat } from "../../public/images/brands/Fiat (1).png";
 // import { Toyota } from "../../public/images/brands/Dacia.png";
@@ -119,6 +120,9 @@ const items: Brands[] = [
 ];
 
 const BrandsListGrand = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4  gap-4 mb-[60px] ">
       {items.map((item) => (
