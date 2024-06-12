@@ -4,7 +4,6 @@ import { useLocation } from "react-router-dom";
 import NavforOtherPages from "../NavforOtherPages";
 import Underline from "../Underline";
 import ModelList from "./ModelList";
-
 const ModelPage = () => {
   //   const location = useLocation();
   //   const queryParams = new URLSearchParams(location.search);
@@ -31,7 +30,7 @@ const ModelPage = () => {
         <Underline />
       </div>
       <div>
-        <ModelList carList={state.Models} />
+        <FakeModel />
       </div>
     </>
   );

@@ -7,7 +7,7 @@ import { faScrewdriverWrench } from "@fortawesome/free-solid-svg-icons";
 import StarRatingcomp from "../starRatingcomp";
 import { faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "../../../@/components/ui/button";
-
+import { Link } from "react-router-dom";
 interface CarDetails {
   id: number;
   make: string;
@@ -123,10 +123,12 @@ const CarsBySearch = ({ carList }: CarListProps) => {
                   <span>{car.energy}</span>
                 </li>
               </ul>
-              <Button className="w-full h-11 shadow-xl shadow-light-pink mb-2 ">
-                {" "}
-                BOOK
-              </Button>
+              <Link className="w-full" to={"/Post"} state={car}>
+                <Button className="w-full h-11 shadow-xl shadow-light-pink mb-2 ">
+                  {" "}
+                  BOOK
+                </Button>
+              </Link>
             </li>
           ) : null
         )}

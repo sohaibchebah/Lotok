@@ -47,6 +47,7 @@ import { Navigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { StringValidation, z } from "zod";
 import { useForm } from "react-hook-form";
+import { useEffect } from "react";
 import {
   SignupValidation,
   postValidation,
@@ -64,7 +65,9 @@ const Post = () => {
   const [to, setTo] = useState<Date | undefined>(undefined);
   const [diff, setdiff] = useState<number>(0);
   const [payment, setPayment] = useState<string>("");
-
+useEffect(() => {
+  window.scrollTo(0, 0);
+}, []);
   const handleDataChange = (newData: Date) => {
     setData(newData);
     setDataString(newData.toLocaleDateString());
@@ -105,7 +108,7 @@ const Post = () => {
       date_to: "",
     },
   });
-  const onSubmit = (data : any) => {
+  const onSubmit = (data: any) => {
     console.log(data);
   };
   return (
@@ -156,7 +159,7 @@ const Post = () => {
                         </div>
                         <div className="flex  items-center gap-4 flex-col">
                           <FormField
-                            control={form.control}
+                            control={form1.control}
                             name="last_name"
                             render={({ field }) => (
                               <FormItem>
@@ -212,7 +215,6 @@ const Post = () => {
                                   id=" Driving licence's Nmber"
                                   placeholder=" Driving licence's Number "
                                   className="w-[200px]"
-                                  
                                 />
                               </FormControl>
                             </FormItem>
@@ -220,7 +222,7 @@ const Post = () => {
                         />
                         <div className=" w-full flex  items-center gap-4 ">
                           <FormField
-                            control={form.control}
+                            control={form1.control}
                             name="expiration_date"
                             render={({ field }) => (
                               <FormItem>
@@ -239,7 +241,7 @@ const Post = () => {
                         Driving Licence image
                       </h2>
                       <FormField
-                        control={form.control}
+                        control={form1.control}
                         name="driving_license"
                         render={({ field }) => (
                           <FormItem>
@@ -262,7 +264,7 @@ const Post = () => {
                       </h2>
 
                       <FormField
-                        control={form.control}
+                        control={form1.control}
                         name="expiration_date"
                         render={({ field }) => (
                           <FormItem>

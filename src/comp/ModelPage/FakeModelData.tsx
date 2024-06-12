@@ -1,7 +1,7 @@
 import React from "react";
 import ModelList from "./ModelList";
 
-const FakeModel = ( ) => {
+const FakeModel = () => {
   const cars: CarListProps = [
     {
       id: 1,
@@ -33,7 +33,7 @@ const FakeModel = ( ) => {
 
   return (
     <div>
-      <ModelList carList={cars}  />
+      <ModelList carList={cars} />
     </div>
   );
 };
