@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavforOtherPages from "../NavforOtherPages";
 import FooterSection from "../FooterSection";
 import { useLocation } from "react-router-dom";
@@ -6,6 +6,9 @@ import Underline from "../Underline";
 
 import FakeDataByBrands from "./FakeDataByBrands";
 const VehiclesByBrands = () => {
+   useEffect(() => {
+     window.scrollTo(0, 0);
+   }, []);
   const { state } = useLocation();
   return (
     <div>

@@ -6,6 +6,15 @@ import { Button } from "../../@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import LogoImg from "../../public/images/logo.png";
 import { Link } from "react-router-dom";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "../../@/components/ui/sheet";
+
 interface Props {
   label: string;
   url: string;
@@ -30,13 +39,13 @@ const NavforOtherPages = () => {
   }, []); // Empty
   const toggleList = () => {
     setIsListOpen(!isListOpen);
-    };
-      const history = useNavigate();
+  };
+  const history = useNavigate();
 
-      const handleClick = () => {
-        // Navigate to Component2 when the button is clicked
-        history("/");
-      };
+  const handleClick = () => {
+    // Navigate to Component2 when the button is clicked
+    history("/");
+  };
   const Navlinks: Props[] = [
     { label: "Home", url: "/" },
     { label: "Brands", url: "/Brands" },
@@ -50,19 +59,60 @@ const NavforOtherPages = () => {
           <img
             src={LogoImg}
             onClick={handleClick}
-            className=" cursor-pointer object-contain h-[150px]"
+            className=" cursor-pointer object-contain h-[110px]"
             alt="#"
           />
         </div>
+        <ul className=" max-lg:hidden w-fit flex xl:justify-center items-center lg:flex-row flex-col justify-around max-lg:h-[250px] max-lg max-lg:pt-5  px-0">
+          {Navlinks.map((item) => (
+            <li key={item.label}>
+              <a
+                href={item.url}
+                className=" lg:mx-2 px-4 py-4 my-4 text-black lg:text-black font-semibold max-xl:py-1 w-[100%] hover:text-primary-red-100 lg:hover:text-primary-red transition-all ease-in"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+          <Button className=" ml-2 px-4 py-2 rounded-lg bg-black text-white ">
+            {" "}
+            <Link to={"/Login"}>Log In</Link>
+          </Button>
+        </ul>
+        <div className="max-lg:pt-10 list flex flex-col justify-center items-center lg:hidden">
+          <Sheet>
+            <SheetTrigger>
+              <FontAwesomeIcon
+                icon={faBars}
+                className="lg:hidden self-center h-6 rounded-full w-6 p-[2px] text-primary-color hover:bg-secondary-color"
+              />
+            </SheetTrigger>
+            <SheetContent>
+              <SheetHeader>
+                <SheetDescription>
+                  <ul className=" w-[100%] flex xl:justify-center items-center lg:flex-row flex-col justify-around max-lg:h-[250px] max-lg max-lg:pt-5  px-0">
+                    {Navlinks.map((item) => (
+                      <li key={item.label}>
+                        <a
+                          href={item.url}
+                          className=" lg:mx-2 px-4 py-4 my-4 text-black lg:text-black font-semibold max-xl:py-1 w-[100%] hover:text-primary-red-100 lg:hover:text-primary-red transition-all ease-in"
+                        >
+                          {item.label}
+                        </a>
+                      </li>
+                    ))}
+                    <Button className=" ml-2 px-4 py-2 rounded-lg bg-black text-white ">
+                      {" "}
+                      <Link to={"/Login"}>Log In</Link>
+                    </Button>
+                  </ul>
+                </SheetDescription>
+              </SheetHeader>
+            </SheetContent>
+          </Sheet>
+        </div>
 
-        <div className=" max-lg:pt-14  list flex flex-col justify-center items-center">
-          <FontAwesomeIcon
-            icon={faBars}
-            onClick={toggleList}
-            className="lg:hidden self-center h-8 text-black "
-          />
-
-          {isListOpen && (
+        {/* {isListOpen && (
             <ul className=" w-[100%] flex xl:justify-center items-center lg:flex-row flex-col justify-around max-lg:h-[250px] max-lg max-lg:pt-5  max-lg:bg-primary-red-100 px-0">
               {Navlinks.map((item) => (
                 <li key={item.label}>
@@ -76,11 +126,10 @@ const NavforOtherPages = () => {
               ))}
               <Button className=" ml-2 px-4 py-2 rounded-lg bg-black text-white ">
                 {" "}
-                <Link to={'/Login'}>Log In</Link>
+                <Link to={"/Login"}>Log In</Link>
               </Button>
             </ul>
-          )}
-        </div>
+          )} */}
       </div>
     </header>
   );

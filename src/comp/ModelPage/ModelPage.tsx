@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import FakeModel from "./FakeModelData";
 import { useLocation } from "react-router-dom";
 import NavforOtherPages from "../NavforOtherPages";
@@ -11,7 +11,9 @@ const ModelPage = () => {
   const { state } = useLocation();
   // const
   //do stuff with state obj
-
+ useEffect(() => {
+   window.scrollTo(0, 0);
+ }, []);
   return (
     <>
       <div className="mb-[200px]">{/* <NavforOtherPages/> */}</div>

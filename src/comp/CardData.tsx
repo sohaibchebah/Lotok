@@ -320,7 +320,7 @@ const CarData = ({ showOnlythree }: Props) => {
 
     
 
-    // Add more car objects as needed
+    // Add more car objects as needed         
   ];
 
   return (

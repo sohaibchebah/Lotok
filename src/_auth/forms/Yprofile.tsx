@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import AddPost from "@/comp/AddPost.tsx/AddPost";
 import NavforOtherPages from "@/comp/NavforOtherPages";
@@ -8,11 +8,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquarePlus } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "../../../@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { } from "lucide-react";
+import {} from "lucide-react";
 import Reservations from "@/comp/Reservation/Reservations";
 const Yprofile = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const toReserve = () => {
     navigate("/Reservations");

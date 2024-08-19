@@ -25,6 +25,6 @@
     }
   },
 
-  "include": ["src", "@/components/components", "@/lib/validation", "@/components/ui/input.tsx"],
+  "include": ["src", "@/components/components", "@/lib/validation", "@/components/ui/input.tsx", "@/components/ui/sheet.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -5,7 +5,9 @@ import SpecialTiltle from "../SpecialTiltle";
 import BrandsListGrand from "./BrandsListGrand";
 import FooterSection from "../FooterSection";
 const BrandPage = () => {
-    
+     useEffect(() => {
+       window.scrollTo(0, 0);
+     }, []);
 
   return (
     <div>

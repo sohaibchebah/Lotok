@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ProfileFkeList from "./ProfileFkeList";
 import NavforOtherPages from "../NavforOtherPages";
 import { useLocation } from "react-router-dom";
 import Underline from "../Underline";
 const Profile = () => {
   const { state } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div>
       {" "}

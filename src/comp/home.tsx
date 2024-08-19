@@ -15,6 +15,7 @@ const Home = () => {
         <div className="bg-primary-red relative">
           <Nav />
         </div>
+        
         <Hero />
         <Searching />
       </div>

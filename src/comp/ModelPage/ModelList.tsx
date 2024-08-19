@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button } from "../../../@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -13,6 +13,9 @@ interface CarListProps {
   carList: CarDetails[];
 }
 const ModelList = ({ carList }: CarListProps) => {
+   useEffect(() => {
+     window.scrollTo(0, 0);
+   }, []);
     const history = useNavigate();
     const handleClick = () => {
       // Navigate to Component2 when the button is clicked
